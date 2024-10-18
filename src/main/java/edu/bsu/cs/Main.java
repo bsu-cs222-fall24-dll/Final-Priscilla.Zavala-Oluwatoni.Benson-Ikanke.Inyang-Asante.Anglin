@@ -9,8 +9,8 @@ public class Main {
 
         String state = UserInput.stateInput();
         BuildURL buildURL = new BuildURL();
-        System.out.println("List of hospitals in state: " + buildURL.buildStateURL(state));
+        System.out.println("List of hospitals in state: " + buildURL.buildHospitalsInStateURL(state));
         String hospital = UserInput.hospitalIDInput();
-        System.out.println("List of hospitals in state: " + buildURL.buildHospitalURL(hospital));
+        System.out.println("List of hospitals in state: " + buildURL.buildHospitalDataURL(hospital));
     }
 }
