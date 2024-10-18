@@ -23,7 +23,7 @@ public class UserModelTest {
     @Test
     void testGetPositionCredentialInvalidCredential() {
         UserModel userModel = new UserModel();
-        String result = userModel.getPositionCredential("");  // Testing when no credential is entered
-        assertNull(result, "Expected null for invalid or empty credential ID");
+        String result = userModel.getPositionCredential("");
+        assertNull(result, "Expects null for invalid or empty credential ID");
     }
 }
