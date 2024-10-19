@@ -19,4 +19,9 @@ public class UserInput {
         System.out.println("Please enter a hospital ID to view retrieve data from that hospital:");
         return scanner.nextLine();
     }
+
+    protected static String taskIDInput() {
+        System.out.println("Please specify your task to view the corresponding data:");
+        return scanner.nextLine();
+    }
 }
