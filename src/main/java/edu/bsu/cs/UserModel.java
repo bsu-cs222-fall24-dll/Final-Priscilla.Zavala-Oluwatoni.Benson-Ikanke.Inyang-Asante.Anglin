@@ -1,29 +1,22 @@
 package edu.bsu.cs;
 
 public class UserModel {
-    protected String getPositionCredential (String credentialID) {
-        if (credentialID.equals("100")) {
-            return "Cost Analyst";
-        } else if (credentialID.equals("200")) {
-            return "Auditor";
-        } else {
-            return null;
-        }
+    private final UserCredentialModel credentialModel = new UserCredentialModel();
+    private final TaskSpecificationModel specificationModel = new TaskSpecificationModel();
+
+    public boolean isValidCredential(String credentialID) {
+        return credentialModel.isValidCredential(credentialID);
     }
 
-    protected boolean isValidCredential(String credentialID) {
-        return credentialID.equals("100") || credentialID.equals("200");
+    public String getPositionByCredential(String credentialID) {
+        return credentialModel.getPositionByCredential(credentialID);
     }
 
-    protected boolean isValidCostAnalystSpecification (String specificationID) {
-        return specificationID.equals("101") || specificationID.equals("102") ||
-                specificationID.equals("103") || specificationID.equals("104") ||
-                specificationID.equals("105") || specificationID.equals("106") ||
-                specificationID.equals("107");
+    public boolean isValidCostAnalystSpecification(String specificationID) {
+        return specificationModel.isValidCostAnalystSpecification(specificationID);
     }
 
-    protected boolean isValidAuditorSpecification (String specificationID) {
-        return specificationID.equals("201") || specificationID.equals("202");
+    public boolean isValidAuditorSpecification(String specificationID) {
+        return specificationModel.isValidAuditorSpecification(specificationID);
     }
-
 }
