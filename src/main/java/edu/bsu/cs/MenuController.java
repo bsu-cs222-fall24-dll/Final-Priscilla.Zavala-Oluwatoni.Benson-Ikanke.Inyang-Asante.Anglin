@@ -13,7 +13,7 @@ public class MenuController {
         view.displayPositionOptions();
         String credentialID = UserInput.credentialInput();
         if (model.isValidCredential(credentialID)) {
-            String welcomeRoleMessage = model.getPositionCredential(credentialID);
+            String welcomeRoleMessage = model.getPositionByCredential(credentialID);
             view.displayMessage("Now logged in as a " + welcomeRoleMessage + "!");
             runPositionTaskMenu(credentialID);
         } else {
@@ -23,7 +23,7 @@ public class MenuController {
     }
 
     protected void runPositionTaskMenu(String credentialID) {
-        String position = model.getPositionCredential(credentialID);
+        String position = model.getPositionByCredential(credentialID);
         if (position != null) {
             displayTasksBasedOnPosition(position);
             processUserTaskInput(position);
