@@ -9,21 +9,21 @@ public class UserModelTest {
     @Test
     void testGetPositionCredentialCostAnalyst() {
         UserModel userModel = new UserModel();
-        String costAnalystResult = userModel.getPositionCredential("100");
+        String costAnalystResult = userModel.getPositionByCredential("100");
         assertEquals("Cost Analyst", costAnalystResult);
     }
 
     @Test
     void testGetPositionCredentialAuditor() {
         UserModel userModel = new UserModel();
-        String auditorResult = userModel.getPositionCredential("200");
+        String auditorResult = userModel.getPositionByCredential("200");
         assertEquals("Auditor", auditorResult);
     }
 
     @Test
     void testGetPositionCredentialInvalidCredential() {
         UserModel userModel = new UserModel();
-        String invalidResult = userModel.getPositionCredential("");
+        String invalidResult = userModel.getPositionByCredential("");
         assertNull(invalidResult, "Expects null for invalid or empty credential ID");
     }
 }

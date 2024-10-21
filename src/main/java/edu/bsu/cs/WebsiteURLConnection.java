@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.*;
 
 public class WebsiteURLConnection{
-    protected static URLConnection connectHospitalURL(String hospitalID) throws URISyntaxException, MalformedURLException {
+    protected static URLConnection connectHospitalURL(String hospitalID) throws URISyntaxException, MalformedURLException{
         BuildURL hospitalURLFormatter = new BuildURL();
         String urlString = hospitalURLFormatter.buildHospitalDataURL(hospitalID);
 
