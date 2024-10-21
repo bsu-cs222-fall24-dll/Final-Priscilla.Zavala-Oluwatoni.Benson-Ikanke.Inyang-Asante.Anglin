@@ -10,10 +10,6 @@ import java.net.URISyntaxException;
 import java.net.URLConnection;
 
 public class JSONDocParser {
-
-    protected JSONDocParser(String hospitalURL) {
-    }
-
     //user selects what information they would like to view
     //jsonPath being the information variable
     //method parses that data and returns it
