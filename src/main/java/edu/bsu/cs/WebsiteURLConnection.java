@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.net.*;
 
 public class WebsiteURLConnection{
-    protected static URLConnection connectHospitalURL(String hospitalID) throws URISyntaxException, MalformedURLException{
-        BuildURL hospitalURLFormatter = new BuildURL();
-        String urlString = hospitalURLFormatter.buildHospitalDataURL(hospitalID);
-
+    protected static URLConnection connectURL(String id) throws URISyntaxException, IOException {
+        BuildURL urlFormatter = new BuildURL();
+        String urlString;
+        if(isNumeric(id)){
+            urlString = urlFormatter.buildHospitalDataURL(id);
+        }else{
+            urlString = urlFormatter.buildHospitalsInStateURL(id);
+        }
         URL url = new URI(urlString).toURL();
 
         try {
@@ -18,7 +22,17 @@ public class WebsiteURLConnection{
             return connection;
         } catch (IOException e) {
             ErrorProcessor.checkNetworkConnection(url);
+            throw new IOException("Unable to connect to " +  urlString);
         }
-        return null;
+    }
+
+    //Helper method
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);  // Try to parse the string to an integer
+            return true;            // If parsing succeeds, it's a number
+        } catch (NumberFormatException e) {
+            return false;           // If parsing fails, it's not a number
+        }
     }
 }
