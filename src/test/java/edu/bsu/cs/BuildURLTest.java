@@ -55,4 +55,24 @@ public class BuildURLTest {
         String outputURL = buildURL.buildHospitalDataURL(testHospitalID);
         assertEquals(expectedHospitalDataURL, outputURL);
     }
+
+    @Test
+    public void testIsValidHospital_ValidNumericID() {
+        assertTrue(buildURL.isValidHospital("889"), "Expected valid hospital ID: 889");
+    }
+
+    @Test
+    public void testIsValidHospital_EmptyString() {
+        assertFalse(buildURL.isValidHospital(""), "Expected invalid hospital ID: empty string");
+    }
+
+    @Test
+    public void testIsValidHospital_Null() {
+        assertFalse(buildURL.isValidHospital(null), "Expected invalid hospital ID: null");
+    }
+
+    @Test
+    public void testIsValidHospital_NonNumericID() {
+        assertFalse(buildURL.isValidHospital("id"), "Expected invalid hospital ID: id");
+    }
 }
