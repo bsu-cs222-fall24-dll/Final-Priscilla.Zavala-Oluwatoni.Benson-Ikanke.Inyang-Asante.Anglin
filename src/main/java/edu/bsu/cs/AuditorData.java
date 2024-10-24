@@ -5,16 +5,15 @@ import net.minidev.json.JSONArray;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-
+//TODO: Class on project backlog - finish refactoring it for second iteration
+    //class currently has no usages - on backlog
 public class AuditorData extends JSONReaderFormatter {
-    //this is reference to the instance in which this method is going to be parsed Json Data
     private final JSONDocParser parser;
 
-    //need to implement the constructor after the method
     public AuditorData(){
         this.parser = new JSONDocParser();
     }
-    //we have to now use this method to now implement retrieval of the data
+
     public String retrieveStateData(String stateID, String jsonPath) throws IOException, URISyntaxException{
 
         String parseData = parser.stateDocParser(stateID,jsonPath);
