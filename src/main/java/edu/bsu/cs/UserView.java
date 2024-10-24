@@ -1,33 +1,25 @@
 package edu.bsu.cs;
 
+import java.util.List;
 public class UserView {
+    private static final String POSITION_OPTIONS = """
+            Position Credentials Listed Below:
+            - Cost Analyst ID: 100
+            - Auditor ID: 200
+            """;
+
     protected void displayPositionOptions() {
-        System.out.println("""
-                Position Credentials Listed Below:
-                - Cost Analyst ID: 100
-                - Auditor ID: 200
-                """);
+        System.out.println(POSITION_OPTIONS);
     }
 
-    protected void displayCostAnalystTasks() {
-        System.out.println("""
-                Position Tasks Specified Below:
-                - Total Revenue ID: 101
-                - Total Functional Expenses ID: 102
-                - Subsidized Health Services as a % of Total Functional Expenses: 103
-                - Health Professions Education as a % of Total Functional Expenses: 104
-                - Total Community Benefits Costs: 105
-                - Charity Care Expenses: 106
-                - Community Health Improvement Services & Community Benefit Operations Cost: 107
-                """);
-    }
-
-    protected void displayAuditorTasks() {
-        System.out.println("""
-                Position Tasks Specified Below:
-                - Bad debt as a % of Total Functional Expenses ID: 201
-                - General Bad Debt ID: 202
-                """);
+    //retrieves list of tasks from MenuController - it is NOT model code
+    protected void displayTasksForPosition(List<String> tasks) {
+        if (tasks != null && !tasks.isEmpty()) {
+            System.out.println("Position Tasks Specified Below:");
+            tasks.forEach(System.out::println);
+        } else {
+            System.err.println("No tasks found for related position.");
+        }
     }
 
     public void displayMessage(String message) {
@@ -37,5 +29,4 @@ public class UserView {
     public void displayErrorMessage(String errorMessage) {
         System.err.println(errorMessage);
     }
-
 }
