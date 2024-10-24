@@ -52,8 +52,7 @@ public class MenuController {
     }
 
     private void runHospitalInfoMenu() {
-        String state = UserInput.stateInput();
-        String hospitalsInStateURL = buildURL.buildStateHospitalURL(state);
+        String hospitalsInStateURL = buildURL.stateValidatorAndBuildURL();
         view.displayMessage("List of hospitals in state: " + hospitalsInStateURL);
 
         String hospitalID = UserInput.hospitalIDInput();
