@@ -1,7 +1,7 @@
 package edu.bsu.cs;
 
 public class BuildURL {
-    public String buildHospitalsInStateURL(String state) {
+    public String buildStateHospitalURL(String state) {
         return "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=" + state;
     }
 
