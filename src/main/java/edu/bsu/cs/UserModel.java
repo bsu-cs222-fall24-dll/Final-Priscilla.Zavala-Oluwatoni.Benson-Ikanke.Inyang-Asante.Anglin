@@ -12,6 +12,16 @@ public class UserModel {
         return credentialModel.getPositionByCredential(credentialID);
     }
 
+    //helper method to separate logic for processing user task input in MenuController
+    public boolean isValidTaskForPosition(String position, String taskID) {
+        if (position.equals("Cost Analyst")) {
+            return isValidCostAnalystSpecification(taskID);
+        } else if (position.equals("Auditor")) {
+            return isValidAuditorSpecification(taskID);
+        }
+        return false;
+    }
+
     public boolean isValidCostAnalystSpecification(String specificationID) {
         return specificationModel.isValidCostAnalystSpecification(specificationID);
     }
