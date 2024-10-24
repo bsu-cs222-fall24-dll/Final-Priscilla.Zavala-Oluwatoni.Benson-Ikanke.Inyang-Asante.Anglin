@@ -1,25 +1,46 @@
 package edu.bsu.cs;
 
 public class BuildURL {
-    public String stateValidatorAndBuildURL() {
+    UserView error = new UserView();
+
+    public boolean isValidState(String state) {
+        try {
+            StateAbbreviation.valueOf(state);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public boolean isValidHospital(String hospital) {
+        //pattern "\\d+" checks string consists of only digits
+        return hospital != null && !hospital.isEmpty() && hospital.matches("\\d+");
+    }
+
+    public String hospitalValidatorBuildURL() {
+        while(true) {
+            String hospital = UserInput.hospitalIDInput();
+            if (isValidHospital(hospital)) {
+                return buildHospitalDataURL(hospital);
+            } else {
+                error.displayErrorMessage("Please enter a valid hospital ID.");
+            }
+        }
+    }
+
+    public String stateValidatorBuildURL() {
         while (true) {
             String state = UserInput.stateInput();
-            try {
+            if (isValidState(state)) {
                 return buildStateHospitalURL(state);
-            } catch (IllegalArgumentException e) {
-                UserView error = new UserView();
-                error.displayErrorMessage(e.getMessage());
+            } else {
+                error.displayErrorMessage("Please enter a valid state abbreviation.");
             }
         }
     }
 
     public String buildStateHospitalURL(String state) {
-        try {
-            StateAbbreviation.valueOf(state);
-            return "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=" + state;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Please enter a valid state abbreviation.");
-        }
+        return "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=" + state;
     }
 
     public String buildHospitalDataURL(String hospital) {
