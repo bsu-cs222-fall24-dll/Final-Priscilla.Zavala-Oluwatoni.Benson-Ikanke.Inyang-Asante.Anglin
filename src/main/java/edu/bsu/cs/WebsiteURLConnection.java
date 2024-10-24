@@ -3,14 +3,14 @@ package edu.bsu.cs;
 import java.io.IOException;
 import java.net.*;
 
-public class WebsiteURLConnection{
+public class WebsiteURLConnection {
     protected static URLConnection connectURL(String id) throws URISyntaxException, IOException {
         BuildURL urlFormatter = new BuildURL();
         String urlString;
         if(StringUtils.isNumeric(id)){
             urlString = urlFormatter.buildHospitalDataURL(id);
         }else{
-            urlString = urlFormatter.buildHospitalsInStateURL(id);
+            urlString = urlFormatter.buildStateHospitalURL(id);
         }
         URL url = new URI(urlString).toURL();
 
