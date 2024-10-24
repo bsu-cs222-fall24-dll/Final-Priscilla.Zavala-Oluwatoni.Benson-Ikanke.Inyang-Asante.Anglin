@@ -52,11 +52,10 @@ public class MenuController {
     }
 
     private void runHospitalInfoMenu() {
-        String hospitalsInStateURL = buildURL.stateValidatorAndBuildURL();
+        String hospitalsInStateURL = buildURL.stateValidatorBuildURL();
         view.displayMessage("List of hospitals in state: " + hospitalsInStateURL);
 
-        String hospitalID = UserInput.hospitalIDInput();
-        String hospitalDataURL = buildURL.buildHospitalDataURL(hospitalID);
+        String hospitalDataURL = buildURL.hospitalValidatorBuildURL();
         view.displayMessage("Data for hospital ID: " + hospitalDataURL);
     }
 }
