@@ -21,7 +21,8 @@ public class WebsiteURLConnection {
             connection.connect();
             return connection;
         } catch (IOException e) {
-            ErrorProcessor.checkNetworkConnection(url);
+            ErrorProcessor checkNetwork = new ErrorProcessor();
+            checkNetwork.checkNetworkConnection(url);
             throw new IOException("Unable to connect to " +  urlString);
         }
     }
