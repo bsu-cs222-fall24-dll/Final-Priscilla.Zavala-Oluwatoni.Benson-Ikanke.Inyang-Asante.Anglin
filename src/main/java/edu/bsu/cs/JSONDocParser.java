@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class JSONDocParser extends JSONReaderFormatter {
-    protected String stateDocParser(String stateID, String jsonPath) throws IOException, URISyntaxException {
-        String jsonFile = jsonDocFormatter(stateID);
+    protected String stateDocParser(String state, String jsonPath) throws IOException, URISyntaxException {
+        String jsonFile = jsonDocFormatter(state);
         JSONArray stateDoc = JsonPath.read(jsonFile, "$.." + jsonPath);
         return stateDoc.toString();
     }
