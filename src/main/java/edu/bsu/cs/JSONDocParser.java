@@ -18,4 +18,10 @@ public class JSONDocParser extends JSONReaderFormatter {
         JSONArray hospitalDoc = JsonPath.read(jsonFile, "$.." + jsonPath);
         return hospitalDoc.toString();
     }
+
+    protected String yearDocParser(String hospitalID) throws IOException, URISyntaxException {
+        String jsonFile = jsonDocFormatter(hospitalID);
+        JSONArray hospitalDoc = JsonPath.read(jsonFile, "$..fiscal_yr");
+        return hospitalDoc.toString();
+    }
 }
