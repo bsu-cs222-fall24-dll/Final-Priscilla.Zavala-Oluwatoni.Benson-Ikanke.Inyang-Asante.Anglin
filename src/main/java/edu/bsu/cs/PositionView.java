@@ -11,16 +11,6 @@ public abstract class PositionView {
         this.model = model;
     }
 
-    // Display names in the JSON data
-    public String displayNameJsonData(String jsonFile) {
-        StringBuilder nameListFormat = new StringBuilder();
-        String[] jsonDataArray = jsonFile.split(",");
-        for (String name : jsonDataArray) {
-            nameListFormat.append(name).append("\n");  // Add a new line for better formatting
-        }
-        return nameListFormat.toString();
-    }
-
     // Display formatted numeric data, calling the model's format method
     public void displayFormattedData(String jsonFile, String jsonPath) throws IOException, URISyntaxException {// Call model's formatNumericJsonData
         System.out.print(jsonFile);  // Print the formatted numerical values
