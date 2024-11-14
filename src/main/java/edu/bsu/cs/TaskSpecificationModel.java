@@ -12,11 +12,27 @@ public class TaskSpecificationModel {
             Set.of("201", "202")
     );
 
+    private static final Set<String> HR_DIRECTOR = new HashSet<>(
+            Set.of("301", "302", "303", "304", "305")
+    );
+
+    private static final Set<String> MEDICAID_DATA_ANALYST = new HashSet<>(
+            Set.of("401", "402", "403", "404", "405")
+    );
+
     protected boolean isValidCostAnalystSpecification(String specificationID) {
         return COST_ANALYST_TASK_ID.contains(specificationID);
     }
 
     protected boolean isValidAuditorSpecification(String specificationID) {
         return AUDITOR_TASK_ID.contains(specificationID);
+    }
+
+    protected boolean isValidHRDirectorSpecification(String specificationID){
+        return HR_DIRECTOR.contains(specificationID);
+    }
+
+    protected boolean isValidMedicaidDataAnalyst(String specificationID){
+        return MEDICAID_DATA_ANALYST.contains(specificationID);
     }
 }

@@ -1,11 +1,13 @@
 package edu.bsu.cs;
 
 import java.util.List;
-public class UserView {
+public class UserView{
     private static final String POSITION_OPTIONS = """
             Position Credentials Listed Below:
             - Cost Analyst ID: 100
             - Auditor ID: 200
+            - HR Director: 300
+            - Medicaid Data Analyst: 400
             """;
 
     protected void displayPositionOptions() {

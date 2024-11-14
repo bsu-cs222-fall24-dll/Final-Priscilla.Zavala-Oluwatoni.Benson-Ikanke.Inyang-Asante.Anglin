@@ -1,8 +1,9 @@
 package edu.bsu.cs;
 
-public class UserModel {
+public class UserModel{
     private final UserCredentialModel credentialModel = new UserCredentialModel();
     private final TaskSpecificationModel specificationModel = new TaskSpecificationModel();
+    private String selectedTaskID;
 
     public boolean isValidCredential(String credentialID) {
         return credentialModel.isValidCredential(credentialID);
@@ -18,8 +19,16 @@ public class UserModel {
             return isValidCostAnalystSpecification(taskID);
         } else if (position.equals("Auditor")) {
             return isValidAuditorSpecification(taskID);
+        } else if (position.equals("HR Director")) {
+            return isValidAuditorSpecification(taskID);
+        } else if (position.equals("Medicaid Data Analyst")) {
+            return isValidAuditorSpecification(taskID);
         }
         return false;
+    }
+
+    public String getSelectedTaskID(){
+        return selectedTaskID;
     }
 
     public boolean isValidCostAnalystSpecification(String specificationID) {
@@ -28,5 +37,13 @@ public class UserModel {
 
     public boolean isValidAuditorSpecification(String specificationID) {
         return specificationModel.isValidAuditorSpecification(specificationID);
+    }
+
+    public boolean isValidHRDirectorSpecification(String specificationID) {
+        return specificationModel.isValidHRDirectorSpecification(specificationID);
+    }
+
+    public boolean isValidMedicaidDataAnalystSpecification(String specificationID) {
+        return specificationModel.isValidMedicaidDataAnalyst(specificationID);
     }
 }

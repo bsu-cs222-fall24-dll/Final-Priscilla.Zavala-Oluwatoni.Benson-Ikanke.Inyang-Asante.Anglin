@@ -2,23 +2,74 @@ package edu.bsu.cs;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuController extends UserView{
     private final UserModel model;
     private final UserView view;
     private final BuildURL buildURL;
-    public CostAnalystModel costAnalystModel = new CostAnalystModel();
-    public CostAnalystView costAnalystView = new CostAnalystView();
+    public String state = "";
     public TaskOptions taskOptions = new TaskOptions();
-    public AuditorData auditorData = new AuditorData();
+    public String positionChoice = "";
     public String taskID = "";
-    private String jsonPath;
-    private String jsonFile;
+    public InStateModelView inStateModelView = new InStateModelView();
+    private PositionModel currentModel;
+    private PositionView currentView;
 
-    protected MenuController(UserModel model, UserView view, BuildURL buildURL) {
+    // Replace individual model objects with a list of models if they share the same type
+    private final List<PositionModel> positionModels = new ArrayList<>();
+
+    public MenuController(UserModel model, UserView view, BuildURL buildURL) {
         this.model = model;
         this.view = view;
         this.buildURL = buildURL;
+
+        // Initialize models
+        positionModels.add(new CostAnalystModel());
+        positionModels.add(new AuditorModel());
+        positionModels.add(new MedicaidDataAnalystModel());
+        // Add more models as needed
+    }
+
+    private void initializeCurrentModel(String position){
+        switch (position) {
+            case "Cost Analyst":
+                currentModel = new CostAnalystModel();
+                break;
+            case "Auditor":
+                currentModel = new AuditorModel();
+                break;
+//            case "HR Director":
+//                currentModel = new HRDirectorModel();
+//                break;
+            case "Medicaid Data Analyst":
+                currentModel = new MedicaidDataAnalystModel();
+                break;
+            default:
+                view.displayErrorMessage("Invalid position selected.");
+                break;
+        }
+    }
+
+    private void initializeCurrentView(String position){
+        switch (position) {
+            case "Cost Analyst":
+                currentView = new CostAnalystView(currentModel);
+                break;
+            case "Auditor":
+                currentView = new AuditorView(currentModel);
+                break;
+//            case "HR Director":
+//                currentView = new HRDirectorModel(currentModel);
+//                break;
+            case "Medicaid Data Analyst":
+                currentView = new MedicaidDataAnalystView(currentModel);
+                break;
+            default:
+                view.displayErrorMessage("Invalid position selected.");
+                break;
+        }
     }
 
     protected void runMenu() throws IOException, URISyntaxException {
@@ -32,22 +83,25 @@ public class MenuController extends UserView{
             view.displayErrorMessage("Invalid credential. Please try again.");
             runMenu();
         }
-
     }
 
     protected void runPositionTaskMenu(String credentialID) throws IOException, URISyntaxException {
         String position = model.getPositionByCredential(credentialID);
-        if (position != null) {
+        initializeCurrentModel(position);
+        if (currentModel != null) {
+            initializeCurrentView(position);
             displayTasksBasedOnPosition(position);
             processUserTaskInput(position);
         }
     }
 
     private void displayTasksBasedOnPosition(String position) {
-        if (position.equals("Cost Analyst")) {
-            view.displayTasksForPosition(taskOptions.getTasksForPosition("Cost Analyst"));
-        } else if (position.equals("Auditor")) {
-            //view.displayAuditorTasks();
+        switch (position) {
+            case "Cost Analyst" -> view.displayTasksForPosition(taskOptions.getTasksForPosition("Cost Analyst"));
+            case "Auditor" -> view.displayTasksForPosition(taskOptions.getTasksForPosition("Auditor"));
+            case "HR Director" -> view.displayTasksForPosition(taskOptions.getTasksForPosition("HR Director"));
+            case "Medicaid Data Analyst" ->
+                    view.displayTasksForPosition(taskOptions.getTasksForPosition("Medicaid Data Analyst"));
         }
     }
 
@@ -55,10 +109,23 @@ public class MenuController extends UserView{
         taskID = UserInput.taskIDInput();
         boolean isValidPositionTask = false;
 
-        if (position.equals("Cost Analyst")) {
-            isValidPositionTask = model.isValidCostAnalystSpecification(taskID);
-        } else if (position.equals("Auditor")) {
-            isValidPositionTask = model.isValidAuditorSpecification(taskID);
+        switch (position) {
+            case "Cost Analyst" -> {
+                positionChoice = "Cost Analyst";
+                isValidPositionTask = model.isValidCostAnalystSpecification(taskID);
+            }
+            case "Auditor" -> {
+                positionChoice = "Auditor";
+                isValidPositionTask = model.isValidAuditorSpecification(taskID);
+            }
+            case "HR Director" -> {
+                positionChoice = "HR Director";
+                isValidPositionTask = model.isValidHRDirectorSpecification(taskID);
+            }
+            case "Medicaid Data Analyst" -> {
+                positionChoice = "Medicaid Data Analyst";
+                isValidPositionTask = model.isValidMedicaidDataAnalystSpecification(taskID);
+            }
         }
 
         if (isValidPositionTask) {
@@ -71,20 +138,25 @@ public class MenuController extends UserView{
     }
 
     private void runHospitalInfoMenu() throws IOException, URISyntaxException {
-        String state = UserInput.stateInput();
+        state = UserInput.stateInput();
         String hospitalsInStateURL = buildURL.buildStateHospitalURL(state);
         view.displayMessage("List of hospitals in state: " + hospitalsInStateURL);
+        menuDisplayState();
 
         String hospitalID = UserInput.hospitalIDInput();
         String hospitalDataURL = buildURL.buildHospitalDataURL(hospitalID);
         view.displayMessage("Data for hospital ID: " + hospitalDataURL);
-        //menuDisplay(hospitalID);
-        auditorData.retrieveHospitalData(hospitalID, "bad_debt_tot_func_exp_pct");
+        menuDisplayHospitalID(hospitalID);
     }
 
-    private void menuDisplay(String hospitalID) throws IOException, URISyntaxException {
-        jsonPath = costAnalystModel.retrieveJsonPath(taskID);
-        jsonFile = costAnalystModel.retrieveJsonFile(hospitalID, jsonPath);
-        costAnalystView.displayFormattedData(jsonFile, jsonPath);
+    private void menuDisplayHospitalID(String hospitalID) throws IOException, URISyntaxException {
+        String jsonPath = currentModel.retrieveJsonPath(taskID);
+        String jsonFile = currentModel.retrieveJsonFile(hospitalID,jsonPath);
+        String formatData = currentModel.formatNumericJsonData(jsonFile);
+        currentView.displayFormattedData(formatData, jsonPath);
+    }
+
+    private void menuDisplayState() throws IOException, URISyntaxException {
+        inStateModelView.displayHospitalsByState();
     }
 }
