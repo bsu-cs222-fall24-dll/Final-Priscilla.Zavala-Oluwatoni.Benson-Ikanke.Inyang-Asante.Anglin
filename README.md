@@ -8,7 +8,7 @@ The program connects to a hospital data API to retrieve and display a list of ho
 The user can then input a hospital ID to view detailed information for that specific hospital. The program then displays
 the hospital information based on the user specified position credential and task ID.
 
-We finishing completing the whole CLI for the second iteration, and we will add visual graphics using JavaFX and CSV export for the data to the user for the third iteration.
+We finished completing the whole CLI for the second iteration, and we will add visual graphics using JavaFX and CSV export option for the data to the user for the third iteration throuhg a GUI.
 
 ### Build Instructions:
 In this first iteration, program is accessed via a single entry point (CLI). To build and run the program, download the code and run the main method in the Main class.
