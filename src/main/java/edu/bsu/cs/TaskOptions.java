@@ -18,6 +18,20 @@ public class TaskOptions {
             "Auditor", List.of(
                     "- Bad debt as a % of Total Functional Expenses ID: 201",
                     "- General Bad Debt ID: 202"
+            ),
+            "HR Director", List.of(
+                    "- Community Building Activities: 301",
+                    "- Community Buildings and Activity Support: 302",
+                    "- Community Health Improvement Services: 303",
+                    "- Leadership Development and Training for Community Members: 304",
+                    "- Total Community Benefits: 305"
+            ),
+            "Medicaid Data Analyst", List.of(
+                    "- Unreimbursed Medicaid as % of Total Functional Expenses: 401",
+                    "- Medicare Shortfall (Negative Value Indicates Surplus): 402",
+                    "- Medicare Shortfall as % of Total Functional Expenses (Negative Value Indicates Surplus): 403",
+                    "- Unreimbursed Medicaid: 404",
+                    "- Ratio of Patient Care to Non-patient Care Community Benefits: 405"
             )
     );
 
