@@ -17,6 +17,12 @@ public class BuildURL {
         return hospital != null && !hospital.isEmpty() && hospital.matches("\\d+");
     }
 
+    //get validated hospital ID - or get error message
+    //pass it in as a parameter for building the hospital data URl
+    public String getValidatedHospitalID() {
+        return buildHospitalDataURL(hospitalValidatorBuildURL());
+    }
+
     public String hospitalValidatorBuildURL() {
         while(true) {
             String hospital = UserInput.hospitalIDInput();
@@ -28,11 +34,11 @@ public class BuildURL {
         }
     }
 
-    public String stateValidatorBuildURL() {
+    public String stateValidator() {
         while (true) {
             String state = UserInput.stateInput();
             if (isValidState(state)) {
-                return buildStateHospitalURL(state);
+                return state;
             } else {
                 error.displayErrorMessage("Please enter a valid state abbreviation.");
             }
