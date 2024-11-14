@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class UserCredentialModel {
     private static final Set<String> VALID_CREDENTIALS = new HashSet<>(
-            Set.of("100", "200")
+            Set.of("100", "200", "300", "400")
     );
 
     protected boolean isValidCredential(String credentialID) {
@@ -17,6 +17,10 @@ public class UserCredentialModel {
             return "Cost Analyst";
         } else if (credentialID.equals("200")) {
             return "Auditor";
+        } else if(credentialID.equals("300")){
+            return "HR Director";
+        } else if (credentialID.equals("400")) {
+            return "Medicaid Data Analyst";
         } else {
             return null;
         }

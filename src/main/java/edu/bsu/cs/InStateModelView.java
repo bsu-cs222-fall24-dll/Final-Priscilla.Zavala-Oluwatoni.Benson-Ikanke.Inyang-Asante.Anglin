@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 public class InStateModelView {
     InStateModel model = new InStateModel();
 
-    public void displayHospitalsByState(String jsonPath) throws IOException, URISyntaxException {
-        System.out.println(model.formatHospitalInfoJsonData(jsonPath));
+    public void displayHospitalsByState() throws IOException, URISyntaxException {
+        System.out.println(model.formatHospitalInfoJsonData());
     }
 }
