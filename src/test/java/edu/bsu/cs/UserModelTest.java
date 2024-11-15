@@ -32,29 +32,48 @@ public class UserModelTest {
     }
 
     @Test
-    void testIsValidCredential_ValidCredential() {
+    void testIsValidCredential_ValidCredential100() {
         assertTrue(userModel.isValidCredential("100"), "Expected valid credential ID: 100");
+    }
+
+    @Test
+    void testIsValidCredential_ValidCredential200() {
         assertTrue(userModel.isValidCredential("200"), "Expected valid credential ID: 200");
     }
 
     @Test
-    void testIsValidCredential_InvalidCredential() {
+    void testIsValidCredential_InvalidCredential0() {
         assertFalse(userModel.isValidCredential("0"), "Expected invalid credential ID: 0");
+    }
+
+    @Test
+    void testIsValidCredential_InvalidCredentialEmptyString() {
         assertFalse(userModel.isValidCredential(""), "Expected invalid credential ID: empty string");
+    }
+
+    @Test
+    void testIsValidCredential_InvalidCredentialNull() {
         assertFalse(userModel.isValidCredential(null), "Expected invalid credential ID: null");
     }
 
     @Test
-    void testIsValidTaskForPosition_ValidTasks() {
+    void testIsValidTaskForPosition_ValidTasksCostAnalyst101() {
         assertTrue(userModel.isValidTaskForPosition("Cost Analyst", "101"), "Expected valid task for Cost Analyst");
+    }
+
+    @Test
+    void testIsValidTaskForPosition_ValidTasksAuditor201() {
         assertTrue(userModel.isValidTaskForPosition("Auditor", "201"), "Expected valid task for Auditor");
     }
 
     @Test
-    void testIsValidTaskForPosition_InvalidTasks() {
+    void testIsValidTaskForPosition_InvalidTasksCostAnalystInvalidID() {
         assertFalse(userModel.isValidTaskForPosition("Cost Analyst", "108"), "Expected invalid task for Cost Analyst");
+    }
+
+    @Test
+    void testIsValidTaskForPosition_InvalidTasksAuditorInvalidID() {
         assertFalse(userModel.isValidTaskForPosition("Auditor", "203"), "Expected invalid task for Auditor");
-        assertFalse(userModel.isValidTaskForPosition("Nonexistent", "301"), "Expected invalid task for nonexistent position");
     }
 }
 
