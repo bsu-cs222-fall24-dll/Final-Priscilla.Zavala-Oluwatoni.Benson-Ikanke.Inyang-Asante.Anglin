@@ -61,9 +61,14 @@ public abstract class PositionModel {
                     numericFormat.append(String.format("\t%-"+ maxDataWidth +"s %s%n", formattedPercentage, year));
                     continue;
                 }
-                String formattedValue = decimalFormat.format(tempNumeric);
-                int padding = (maxDataWidth - title.length()) / 2;
-                numericFormat.append(String.format("%"  + (padding + title.length()) + "s %"+ ((maxDataWidth + 8 ) - padding - title.length()) + "s%n", formattedValue, year));
+                try{
+                    String formattedValue = decimalFormat.format(tempNumeric);
+                    int padding = Math.abs((maxDataWidth - title.length()) / 2);
+                    numericFormat.append(String.format("%"  + (padding + title.length()) + "s %"+ ((maxDataWidth + 8 ) - padding - title.length()) + "s%n", formattedValue, year));
+
+                }catch (Exception e){
+                    System.err.println("Format error...");
+                }
         }
         return numericFormat.toString();
     }

@@ -29,6 +29,7 @@ public class MenuController extends UserView{
         positionModels.add(new CostAnalystModel());
         positionModels.add(new AuditorModel());
         positionModels.add(new MedicaidDataAnalystModel());
+        positionModels.add(new HRDirectorModel());
         // Add more models as needed
     }
 
@@ -40,9 +41,9 @@ public class MenuController extends UserView{
             case "Auditor":
                 currentModel = new AuditorModel();
                 break;
-//            case "HR Director":
-//                currentModel = new HRDirectorModel();
-//                break;
+            case "HR Director":
+                currentModel = new HRDirectorModel();
+                break;
             case "Medicaid Data Analyst":
                 currentModel = new MedicaidDataAnalystModel();
                 break;
@@ -60,9 +61,9 @@ public class MenuController extends UserView{
             case "Auditor":
                 currentView = new AuditorView(currentModel);
                 break;
-//            case "HR Director":
-//                currentView = new HRDirectorModel(currentModel);
-//                break;
+            case "HR Director":
+                currentView = new HRDirectorView(currentModel);
+                break;
             case "Medicaid Data Analyst":
                 currentView = new MedicaidDataAnalystView(currentModel);
                 break;

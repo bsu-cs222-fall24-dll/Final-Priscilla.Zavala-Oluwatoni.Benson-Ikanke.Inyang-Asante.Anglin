@@ -1,9 +1,9 @@
 package edu.bsu.cs;
 
-public class HRDirectorModelView extends PositionView {
+public class HRDirectorView extends PositionView {
     private final HRDirectorModel model = new HRDirectorModel();
 
-    public HRDirectorModelView(PositionModel model) {
+    public HRDirectorView(PositionModel model) {
         super(model);
     }
 

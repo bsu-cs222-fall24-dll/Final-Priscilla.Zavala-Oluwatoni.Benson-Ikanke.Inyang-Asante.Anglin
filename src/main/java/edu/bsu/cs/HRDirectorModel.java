@@ -1,50 +1,33 @@
 package edu.bsu.cs;
 
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.internal.JsonFormatter;
-import net.minidev.json.JSONArray;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.DecimalFormat;
-import java.text.FieldPosition;
-import java.text.NumberFormat;
-import java.text.ParsePosition;
+public class HRDirectorModel extends PositionModel{
 
-
-public class HRDirectorModel {
-
-
+    @Override
     protected String retrieveJsonPath(String roleID) {
         String jsonPath = "";
         switch (roleID) {
-            case "101":
+            case "301":
                 jsonPath = "comm_bldg_actvs";
                 break;
-            case "102":
+            case "302":
                 jsonPath = "comm_bldg_actvs_cmntysuprt";
                 break;
-            case "103":
+            case "303":
                 jsonPath = "comm_hlth_impr_svcs_comm_bnft_oper";
                 break;
-            case "104":
+            case "304":
                 jsonPath = "comm_bldg_actvs_ldrdevlp";
                 break;
-            case "105":
+            case "305":
                 jsonPath = "tot_comm_bnfts";
                 break;
             default:
                 ErrorProcessor.displayErrorMessage("Error could not retrieve JsonPath Title...");
-
         }
         return jsonPath;
     }
 
-    private String title;
-
-    private void setTitle(String newTitle) {
-        this.title = newTitle;
-    }
-
+    @Override
     protected void changeTitle(String jsonPath) {
         switch (jsonPath) {
             case "comm_bldg_actvs":
@@ -67,20 +50,4 @@ public class HRDirectorModel {
         }
         System.out.printf("%18s\n", getTitle());
     }
-
-    protected String getTitle() {
-        return title;
-    }
-
-    public String formatNumericJsonData(String jsonFile) {
-
-        return jsonFile;
-    }
 }
-
-
-
-
-
-
-
