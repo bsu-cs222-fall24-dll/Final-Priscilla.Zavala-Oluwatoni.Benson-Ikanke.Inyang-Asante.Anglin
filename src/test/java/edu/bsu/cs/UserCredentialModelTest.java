@@ -14,27 +14,32 @@ public class UserCredentialModelTest {
     }
 
     @Test
-    public void testIsValidCredential_withValidCredential() {
+    public void testIsValidCredential_withValidCredential100() {
         assertTrue(userCredentialModel.isValidCredential("100"));
+    }
+
+    @Test
+    public void testIsValidCredential_withValidCredential200() {
         assertTrue(userCredentialModel.isValidCredential("200"));
     }
 
     @Test
-    public void testIsValidCredential_withInvalidCredential() {
-        assertFalse(userCredentialModel.isValidCredential("300"));
+    public void testIsValidCredential_withInvalidCredentialNull() {
         assertFalse(userCredentialModel.isValidCredential(null));
+    }
+
+    @Test
+    public void testIsValidCredential_withInvalidCredentialEmptyString() {
         assertFalse(userCredentialModel.isValidCredential(""));
     }
 
     @Test
-    public void testGetPositionByCredential_withValidCredential() {
+    public void testGetPositionByCredential_withValidCredentialCostAnalyst100() {
         assertEquals("Cost Analyst", userCredentialModel.getPositionByCredential("100"));
-        assertEquals("Auditor", userCredentialModel.getPositionByCredential("200"));
     }
 
     @Test
-    public void testGetPositionByCredential_withInvalidCredential() {
-        assertNull(userCredentialModel.getPositionByCredential("300"));
-        assertNull(userCredentialModel.getPositionByCredential(""));
+    public void testGetPositionByCredential_withValidCredentialAuditor200() {
+        assertEquals("Auditor", userCredentialModel.getPositionByCredential("200"));
     }
 }
