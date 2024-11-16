@@ -1,7 +1,11 @@
 package edu.bsu.cs;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class BuildURL {
     UserView error = new UserView();
+    Dotenv dotenv = Dotenv.load();
+    String apiKey = dotenv.get("API_KEY");
 
     public boolean isValidState(String state) {
         try {
@@ -46,10 +50,10 @@ public class BuildURL {
     }
 
     public String buildStateHospitalURL(String state) {
-        return "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=" + state;
+        return "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=" + state + "&" + apiKey;
     }
 
     public String buildHospitalDataURL(String hospital) {
-        return "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=" + hospital;
+        return "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=" + hospital + "&" + apiKey;
     }
 }

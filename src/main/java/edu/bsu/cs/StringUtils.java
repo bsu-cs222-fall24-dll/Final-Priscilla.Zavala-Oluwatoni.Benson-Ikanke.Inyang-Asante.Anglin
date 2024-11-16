@@ -2,7 +2,7 @@ package edu.bsu.cs;
 
 public final class StringUtils {
     //Helper method
-    public static boolean isNumeric(String str) {
+    static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);  // Try to parse the string to an integer
             return true;
