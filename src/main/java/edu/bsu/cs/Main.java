@@ -10,6 +10,5 @@ public class Main {
         BuildURL buildURL = new BuildURL();
         MenuController controller = new MenuController(model, view, buildURL);
         controller.runMenu();
-        //will have hospitals in state and hospital data displayed in list format from json docs
     }
 }
