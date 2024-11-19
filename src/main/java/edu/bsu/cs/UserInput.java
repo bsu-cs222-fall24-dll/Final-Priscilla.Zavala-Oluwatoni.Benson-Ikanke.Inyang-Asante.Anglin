@@ -33,5 +33,7 @@ public class UserInput {
         return hospitalID;
     }
 
-    protected static String getStateID(){return stateID;}
+    protected static String getStateID(){
+        return stateID;
+    }
 }
