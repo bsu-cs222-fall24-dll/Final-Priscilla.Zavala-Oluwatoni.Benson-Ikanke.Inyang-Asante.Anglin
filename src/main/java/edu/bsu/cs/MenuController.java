@@ -17,7 +17,6 @@ public class MenuController extends UserView{
     private PositionModel currentModel;
     private PositionView currentView;
 
-    // Replace individual model objects with a list of models if they share the same type
     private final List<PositionModel> positionModels = new ArrayList<>();
 
     public MenuController(UserModel model, UserView view, BuildURL buildURL) {
@@ -25,12 +24,10 @@ public class MenuController extends UserView{
         this.view = view;
         this.buildURL = buildURL;
 
-        // Initialize models
         positionModels.add(new CostAnalystModel());
         positionModels.add(new AuditorModel());
         positionModels.add(new MedicaidDataAnalystModel());
         positionModels.add(new HRDirectorModel());
-        // Add more models as needed
     }
 
     private void initializeCurrentModel(String position){

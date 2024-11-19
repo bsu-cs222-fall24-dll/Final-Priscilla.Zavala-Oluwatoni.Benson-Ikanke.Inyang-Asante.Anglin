@@ -13,6 +13,6 @@ public class AuditorView extends PositionView{
     @Override
     public void displayFormattedData(String jsonFile, String jsonPath) throws IOException, URISyntaxException {
         model.changeTitle(jsonPath);
-        System.out.print(jsonFile); // Print the formatted numerical values
+        System.out.print(jsonFile);
     }
 }
