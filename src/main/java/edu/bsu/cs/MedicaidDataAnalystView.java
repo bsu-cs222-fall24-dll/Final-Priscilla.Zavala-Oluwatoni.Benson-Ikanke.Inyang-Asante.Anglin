@@ -9,6 +9,6 @@ public class MedicaidDataAnalystView extends PositionView{
     @Override
     public void displayFormattedData(String jsonFile, String jsonPath){
         model.changeTitle(jsonPath);
-        System.out.print(jsonFile); // Print the formatted numerical values
+        System.out.print(jsonFile);
     }
 }

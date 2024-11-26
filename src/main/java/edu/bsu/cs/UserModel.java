@@ -3,7 +3,6 @@ package edu.bsu.cs;
 public class UserModel{
     private final UserCredentialModel credentialModel = new UserCredentialModel();
     private final TaskSpecificationModel specificationModel = new TaskSpecificationModel();
-    private String selectedTaskID;
 
     public boolean isValidCredential(String credentialID) {
         return credentialModel.isValidCredential(credentialID);
@@ -25,10 +24,6 @@ public class UserModel{
             return isValidAuditorSpecification(taskID);
         }
         return false;
-    }
-
-    public String getSelectedTaskID(){
-        return selectedTaskID;
     }
 
     public boolean isValidCostAnalystSpecification(String specificationID) {
