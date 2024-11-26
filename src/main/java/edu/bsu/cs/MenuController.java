@@ -1,5 +1,8 @@
 package edu.bsu.cs;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -14,6 +17,8 @@ public class MenuController extends UserView{
     public String positionChoice = "";
     public String taskID = "";
     public InStateModelView inStateModelView = new InStateModelView();
+    @FXML
+    public PasswordField credentialsPassword;
     private PositionModel currentModel;
     private PositionView currentView;
 
@@ -139,7 +144,7 @@ public class MenuController extends UserView{
     }
 
     private void runHospitalInfoMenu() throws IOException, URISyntaxException {
-        state = UserInput.stateInput();
+        state = buildURL.stateValidator();
         String hospitalsInStateURL = buildURL.buildStateHospitalURL(state);
         view.displayMessage("List of hospitals in state: " + hospitalsInStateURL);
         menuDisplayState();
@@ -158,6 +163,6 @@ public class MenuController extends UserView{
     }
 
     private void menuDisplayState() throws IOException, URISyntaxException {
-        inStateModelView.displayHospitalsByState();
+        inStateModelView.displayHospitalsByState(state);
     }
 }

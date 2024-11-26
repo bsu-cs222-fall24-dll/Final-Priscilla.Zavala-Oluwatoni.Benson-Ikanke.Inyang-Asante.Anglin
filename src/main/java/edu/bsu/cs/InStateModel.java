@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class InStateModel extends JSONDocParser {
+    String[] jsonHospitalNameArray;
+    String[] jsonHospitalIDArray;
 
-    protected String formatHospitalInfoJsonData() throws IOException, URISyntaxException {
+    protected String formatHospitalInfoJsonData(String state) throws IOException, URISyntaxException {
         StringBuilder hospitalInfoFormat = new StringBuilder();
 
         String regex = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
 
-        String[] jsonHospitalNameArray = stateDocParser(UserInput.getStateID(), "name").replace("[", "").replace("]", "").split(regex);
-        String[] jsonHospitalIDArray = stateDocParser(UserInput.getStateID(), "hospital_id").replace("[", "").replace("]", "").replace("\"", "").split(regex);
+        jsonHospitalNameArray = stateDocParser(state, "name").replace("[", "").replace("]", "").split(regex);
+        jsonHospitalIDArray = stateDocParser(state, "hospital_id").replace("[", "").replace("]", "").replace("\"", "").split(regex);
 
         int maxNameWidth = 0;
         for (String name : jsonHospitalNameArray) {
@@ -28,5 +30,13 @@ public class InStateModel extends JSONDocParser {
         int padding = (maxNameWidth - hospitalTitle.length()) / 2;
         System.out.printf("%"  + (padding + hospitalTitle.length()) + "s %" + ((maxNameWidth + 8) - padding - hospitalTitle.length()) + "s\n", "Hospital Name", "Hospital ID");
         return hospitalInfoFormat.toString();
+    }
+
+    public String[] getJsonHospitalNameArray() {
+        return jsonHospitalNameArray;
+    }
+
+    public String[] getJsonHospitalIDArray(){
+        return jsonHospitalIDArray;
     }
 }

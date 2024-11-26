@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="536.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs.CostAnalystController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="38.0" prefWidth="656.0">
+               <children>
+                  <Label prefHeight="37.0" prefWidth="128.0" text="User Dashboard">
+                     <font>
+                        <Font name="Montserrat Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#logout" text="Sign Out">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <SplitMenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Task Options">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Total Revenue ID" />
+                  <MenuItem mnemonicParsing="false" text="Total Functional Expenses ID" />
+                  <MenuItem mnemonicParsing="false" text="Subsidized Health Services as a % of Total Functional Expenses" />
+                  <MenuItem mnemonicParsing="false" text="Total Community Benefits Costs" />
+                  <MenuItem mnemonicParsing="false" text="Charity Care Expenses" />
+                  <MenuItem mnemonicParsing="false" text="Community Health Improvement Services &amp; Community Benefit Operations Cost" />
+               </items>
+            </SplitMenuButton>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="stateComboBox" onAction="#stateSelector" prefHeight="26.0" prefWidth="114.0" promptText="Select a State" />
+                  <Label text="Select State">
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label text="Hospital App Name" AnchorPane.rightAnchor="10.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Separator maxWidth="-Infinity" minWidth="600.0" prefHeight="10.0" style="-fx-background-color: #a85e32;" AnchorPane.topAnchor="27.0" />
+      <ListView fx:id="stateSelectionHospitals" layoutX="-6.0" layoutY="261.0" prefHeight="200.0" prefWidth="661.0" AnchorPane.bottomAnchor="75.0" />
+   </children>
+</AnchorPane>
