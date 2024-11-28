@@ -12,6 +12,17 @@ public abstract class PositionModel {
     private final NumberFormat number = NumberFormat.getPercentInstance();
     private final JSONDocParser jsonDocParser = new JSONDocParser();
 
+    public String[] getJsonDataArray() {
+        return jsonDataArray;
+    }
+
+    public String[] getJsonYearArray() {
+        return jsonYearArray;
+    }
+
+    private String[] jsonDataArray;
+    private String[] jsonYearArray;
+
     protected abstract String retrieveJsonPath(String taskIDFromUserChoice);
 
     protected abstract void changeTitle(String jsonPath);
@@ -40,8 +51,8 @@ public abstract class PositionModel {
 
     protected String formatNumericJsonData(String jsonFile) throws IOException, URISyntaxException {
         StringBuilder numericFormat = new StringBuilder();
-        String[] jsonDataArray = jsonFile.replace("[", "").replace("]", "").replace("\"", "").split(",");
-        String[] jsonYearArray = jsonDocParser.yearDocParser(UserInput.getHospitalID()).replace("[", "").replace("]", "").replace("\"", "").split(",");
+        jsonDataArray = jsonFile.replace("[", "").replace("]", "").replace("\"", "").split(",");
+        jsonYearArray = jsonDocParser.yearDocParser(UserInput.getHospitalID()).replace("[", "").replace("]", "").replace("\"", "").split(",");
 
         int maxDataWidth = 0;
         for (String name : jsonDataArray) {

@@ -1,8 +1,5 @@
 package edu.bsu.cs;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -17,8 +14,6 @@ public class MenuController extends UserView{
     public String positionChoice = "";
     public String taskID = "";
     public InStateModelView inStateModelView = new InStateModelView();
-    @FXML
-    public PasswordField credentialsPassword;
     private PositionModel currentModel;
     private PositionView currentView;
 

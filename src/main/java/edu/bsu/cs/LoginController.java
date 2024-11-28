@@ -1,5 +1,6 @@
 package edu.bsu.cs;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,6 +66,7 @@ public class LoginController extends Controller{
 
                 Controller controller = loader.getController();
                 controller.stateComboBox.setItems(showStates());
+                controller.setTaskOptions();
 
                 Stage newStage = new Stage();
                 newStage.setTitle(role + " Dashboard");
@@ -79,5 +81,19 @@ public class LoginController extends Controller{
             e.printStackTrace();
             showAlert("Program failed");
         }
+    }
+
+    public void handleClose(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    @Override
+    public ObservableList<String> taskOptions() {
+        return null;
+    }
+
+    @Override
+    protected void setTaskOptions() {
+
     }
 }

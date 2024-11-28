@@ -30,8 +30,11 @@ public abstract class Controller {
     @FXML
     ListView<String> stateSelectionHospitals;
 
+    public abstract ObservableList<String> taskOptions();
+
+    protected abstract void setTaskOptions();
+
     public void selectionHandler(String state) throws IOException, URISyntaxException {
-        //Based on the state use the build url to get the list of hospitals in the state
         clearListView();
         stateSelectionHospitals.setItems(retrieveInStateHospitals(state));
     }
@@ -64,8 +67,8 @@ public abstract class Controller {
             if (selectedState != null) {
                 try {
                     selectionHandler(selectedState);
-                } catch (IOException | URISyntaxException e) {
-                    throw new RuntimeException(e);
+                } catch (Exception e) {
+                    showAlert("Trouble connecting to the internet");
                 }
             }
         });
@@ -88,10 +91,8 @@ public abstract class Controller {
 
     public ObservableList<String> retrieveInStateHospitals(String stateSelection) throws IOException, URISyntaxException {
         inStateModel.formatHospitalInfoJsonData(stateSelection);
-        // Combine hospital names and IDs and add to the observable list
         for (int i = 0; i < inStateModel.getJsonHospitalNameArray().length; i++) {
-            // Format each hospital name with its corresponding ID
-            String hospitalInfo = inStateModel.jsonHospitalNameArray[i] + " (ID: " + inStateModel.getJsonHospitalIDArray()[i] + ")";
+            String hospitalInfo = inStateModel.getJsonHospitalNameArray()[i] + " (ID: " + inStateModel.getJsonHospitalIDArray()[i] + ")";
             observableList.add(hospitalInfo);
         }
         return observableList;

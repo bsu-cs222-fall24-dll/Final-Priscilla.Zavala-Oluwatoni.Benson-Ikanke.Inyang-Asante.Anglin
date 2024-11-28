@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class InStateModel extends JSONDocParser {
-    String[] jsonHospitalNameArray;
-    String[] jsonHospitalIDArray;
+    private String[] jsonHospitalNameArray;
+    private String[] jsonHospitalIDArray;
 
     protected String formatHospitalInfoJsonData(String state) throws IOException, URISyntaxException {
         StringBuilder hospitalInfoFormat = new StringBuilder();
