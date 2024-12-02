@@ -14,6 +14,31 @@ public final class StringUtils {
         }
     }
 
+    public static void processSelectedHospital(
+            String selectedHospital,
+            PositionModel positionModel,
+            String taskID) {
+        try {
+            //extracts hospital ID
+            String hospitalID = extractFirstNumber(selectedHospital);
+
+            //stores hospital ID globally to use in utility class
+            UserInput.setHospitalID(hospitalID);
+
+            String jsonPath = positionModel.retrieveJsonPath(taskID);
+            String jsonFile = positionModel.retrieveJsonFile(hospitalID, jsonPath);
+
+            positionModel.formatNumericJsonData(jsonFile);
+
+            //validating data
+            if (positionModel.getJsonDataArray() == null || positionModel.getJsonYearArray() == null) {
+                AlertUtils.showError("No hospital data found");
+            }
+        } catch (Exception e) {
+            AlertUtils.showError("Select state and task option");
+        }
+    }
+
     public static String extractFirstNumber(String str) {
         //handle null and/or empty strings
         if (str == null || str.isEmpty()) {
