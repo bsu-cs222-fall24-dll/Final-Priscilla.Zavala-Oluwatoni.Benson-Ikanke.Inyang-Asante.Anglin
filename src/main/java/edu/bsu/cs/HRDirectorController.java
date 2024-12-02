@@ -27,12 +27,46 @@ public class HRDirectorController extends Controller{
         taskComboBox.setItems(taskOptions());
     }
 
+    @SuppressWarnings("unused")
     public void handleTaskSelection(ActionEvent actionEvent) {
+        positionModel.setTitle(taskComboBox.getValue());
+        String selectedTaskID = taskComboBox.getValue();
+
+        switch (selectedTaskID) {
+            case "Community Building Activities":
+                taskID = "301";
+                break;
+            case "Community Buildings and Activity Support":
+                taskID = "302";
+                break;
+            case "Community Health Improvement Services":
+                taskID = "303";
+                break;
+            case "Leadership Development and Training for Community Members":
+                taskID = "304";
+                break;
+            case "Total Community Benefits":
+                taskID = "305";
+                break;
+            default:
+                AlertUtils.showError("Error processing task id");
+        }
     }
 
-    public void handleBarChart(ActionEvent actionEvent) {
+    @SuppressWarnings("unused")
+    public void handleBarChart (ActionEvent actionEvent){
+        String title = positionModel.getTitle();
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
     }
 
-    public void listViewSelectedHospital(MouseEvent mouseEvent) {
+    @SuppressWarnings("unused")
+    public void listViewSelectedHospital (MouseEvent mouseEvent){
+        String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
+
+        //utility method to handle hospital selection
+        StringUtils.processSelectedHospital(selectedHospital, positionModel, taskID);
     }
 }

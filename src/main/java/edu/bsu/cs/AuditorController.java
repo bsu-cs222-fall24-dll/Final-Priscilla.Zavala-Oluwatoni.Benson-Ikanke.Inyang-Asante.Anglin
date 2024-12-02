@@ -2,8 +2,11 @@ package edu.bsu.cs;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class AuditorController extends Controller{
@@ -16,34 +19,27 @@ public class AuditorController extends Controller{
     @FXML
     private ComboBox<String> taskComboBox;
 
-    public void setTaskOptions(){
-        taskComboBox.setItems(taskOptions());
+    @Override
+    public ObservableList<String> taskOptions() {
+        return FXCollections.observableArrayList("Bad debt as a % of Total Functional Expenses ID",
+        "General Bad Debt ID");
     }
 
     @Override
-    public ObservableList<String> taskOptions() {
-        return FXCollections.observableArrayList("Bad debt as a % of Total Functional Expenses",
-        "General Bad Debt");
+    protected void setTaskOptions() {
+        taskComboBox.setItems(taskOptions());
     }
 
-    public void handleBarChart() {
-        String title = positionModel.getTitle();
-        String[] years = positionModel.getJsonYearArray();
-        String[] hospitalDataArray = positionModel.getJsonDataArray();
-
-        BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
-    }
-
-    public void handleTaskSelection() {
+    public void handleTaskSelection(ActionEvent actionEvent) {
         //used for selecting the json path
         positionModel.setTitle(taskComboBox.getValue());
         String selectedTaskID = taskComboBox.getValue();
 
-        switch (selectedTaskID) {
-            case "Bad debt as a % of Total Functional Expenses":
+        switch (selectedTaskID){
+            case "Bad debt as a % of Total Functional Expenses ID":
                 taskID = "201";
                 break;
-            case "General Bad Debt":
+            case "General Bad Debt ID":
                 taskID = "202";
                 break;
             default:
@@ -51,7 +47,15 @@ public class AuditorController extends Controller{
         }
     }
 
-    public void listViewSelectedHospital() {
+    public void handleBarChart(ActionEvent actionEvent) {
+        String title = positionModel.getTitle();
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
+    }
+
+    public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
 
         //utility method to handle hospital selection

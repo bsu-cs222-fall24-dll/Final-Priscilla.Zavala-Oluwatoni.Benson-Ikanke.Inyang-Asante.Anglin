@@ -30,11 +30,11 @@ public class LoginController extends Controller{
 
                 switch (password) {
                     case "100":
-                        role = "Auditor";
+                        role = "Cost Analyst";
                         fxmlFile = "/CostAnalystView.fxml";
                         break;
                     case "200":
-                        role = "Cost Analyst";
+                        role = "Auditor";
                         fxmlFile = "/AuditorView.fxml";
                         break;
                     case "300":
