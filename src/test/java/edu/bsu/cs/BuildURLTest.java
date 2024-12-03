@@ -30,7 +30,7 @@ public class BuildURLTest {
 
     @Test
     public void testBuildStateHospitalURL() {
-        String expectedHospitalsInStateURL = "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=OH";
+        String expectedHospitalsInStateURL = "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=OH&access_id=w2pF83jSz43nAnf82A49xFns32";
         String testState = "OH";
         String outputURL = buildURL.buildStateHospitalURL(testState);
         assertEquals(expectedHospitalsInStateURL, outputURL);
@@ -38,19 +38,19 @@ public class BuildURLTest {
 
     @Test
     public void testBuildHospitalDataURL_EmptyHospitalID() {
-        String expectedURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=";
+        String expectedURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=&access_id=w2pF83jSz43nAnf82A49xFns32";
         assertEquals(expectedURL, buildURL.buildHospitalDataURL(""));
     }
 
     @Test
     public void testBuildHospitalDataURL_NonNumericHospitalID() {
-        String expectedURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=abc123";
+        String expectedURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=abc123&access_id=w2pF83jSz43nAnf82A49xFns32";
         assertEquals(expectedURL, buildURL.buildHospitalDataURL("abc123"));
     }
 
     @Test
     public void testBuildHospitalDataURL() {
-        String expectedHospitalDataURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=2303";
+        String expectedHospitalDataURL = "https://www.communitybenefitinsight.org/api/get_hospital_data.php?hospital_id=2303&access_id=w2pF83jSz43nAnf82A49xFns32";
         String testHospitalID = "2303";
         String outputURL = buildURL.buildHospitalDataURL(testHospitalID);
         assertEquals(expectedHospitalDataURL, outputURL);
