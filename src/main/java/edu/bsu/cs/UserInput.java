@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class UserInput {
     private static final Scanner scanner = new Scanner(System.in);
     private static String hospitalID;
-    private static String taskID;
-    private static String stateID;
 
     protected static String credentialInput() {
         System.out.println("Please enter your credentials based on your position:");
@@ -15,8 +13,7 @@ public class UserInput {
 
     protected static String stateInput() {
         System.out.println("Please enter a state to view a list of hospitals within that state:");
-        stateID = scanner.nextLine().toUpperCase();
-        return stateID;
+        return scanner.nextLine().toUpperCase();
     }
 
     public static void setHospitalID(String hospitalID) {
@@ -31,19 +28,10 @@ public class UserInput {
 
     protected static String taskIDInput() {
         System.out.println("Please specify your task to view the corresponding data:");
-        taskID = scanner.nextLine();
-        return taskID;
+        return scanner.nextLine();
     }
 
     protected static String getHospitalID(){
         return hospitalID;
-    }
-
-    protected static String getStateID(){
-        return stateID;
-    }
-
-    public static String getTaskID() {
-        return taskID;
     }
 }

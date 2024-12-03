@@ -12,6 +12,6 @@ public final class ErrorProcessor {
         }
     }
     public static void displayErrorMessage(String message){
-        System.err.println(message);;
+        System.err.println(message);
     }
 }

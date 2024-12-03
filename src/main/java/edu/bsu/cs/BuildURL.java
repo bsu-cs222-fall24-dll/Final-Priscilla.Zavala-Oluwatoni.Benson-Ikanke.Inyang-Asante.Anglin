@@ -21,23 +21,6 @@ public class BuildURL {
         return hospital != null && !hospital.isEmpty() && hospital.matches("\\d+");
     }
 
-    //get validated hospital ID - or get error message
-    //pass it in as a parameter for building the hospital data URl
-    public String getValidatedHospitalID() {
-        return buildHospitalDataURL(hospitalValidatorBuildURL());
-    }
-
-    public String hospitalValidatorBuildURL() {
-        while(true) {
-            String hospital = UserInput.hospitalIDInput();
-            if (isValidHospital(hospital)) {
-                return buildHospitalDataURL(hospital);
-            } else {
-                error.displayErrorMessage("Please enter a valid hospital ID.");
-            }
-        }
-    }
-
     public String stateValidator() {
         while (true) {
             String state = UserInput.stateInput();

@@ -17,13 +17,13 @@ public class MenuController extends UserView{
     private PositionModel currentModel;
     private PositionView currentView;
 
-    private final List<PositionModel> positionModels = new ArrayList<>();
-
     public MenuController(UserModel model, UserView view, BuildURL buildURL) {
         this.model = model;
         this.view = view;
         this.buildURL = buildURL;
 
+        @SuppressWarnings("do not need to be queried for purpose of project, but necessary to be updated")
+        List<PositionModel> positionModels = new ArrayList<>();
         positionModels.add(new CostAnalystModel());
         positionModels.add(new AuditorModel());
         positionModels.add(new MedicaidDataAnalystModel());
