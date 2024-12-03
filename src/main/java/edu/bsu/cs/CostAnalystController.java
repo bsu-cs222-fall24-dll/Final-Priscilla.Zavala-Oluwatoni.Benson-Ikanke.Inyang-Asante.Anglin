@@ -2,8 +2,10 @@ package edu.bsu.cs;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class CostAnalystController extends Controller{
@@ -32,15 +34,8 @@ public class CostAnalystController extends Controller{
                 "Community Health Improvement Services & Community Benefit Operations Cost");
     }
 
-    public void handleBarChart() {
-        String title = positionModel.getTitle();
-        String[] years = positionModel.getJsonYearArray();
-        String[] hospitalDataArray = positionModel.getJsonDataArray();
-
-        BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
-    }
-
-    public void handleTaskSelection() {
+    @SuppressWarnings("unused")
+    public void handleTaskSelection(ActionEvent actionEvent) {
         //used for selecting the json path
         positionModel.setTitle(taskComboBox.getValue());
         String selectedTaskID = taskComboBox.getValue();
@@ -72,7 +67,17 @@ public class CostAnalystController extends Controller{
         }
     }
 
-    public void listViewSelectedHospital() {
+    @SuppressWarnings("unused")
+    public void handleBarChart(ActionEvent actionEvent) {
+        String title = positionModel.getTitle();
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
+    }
+
+    @SuppressWarnings("unused")
+    public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
 
         //utility method to handle hospital selection

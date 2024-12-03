@@ -6,8 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 public class HRDirectorController extends Controller{
+    PositionModel positionModel = new HRDirectorModel();
+    public String taskID;
+
+    @FXML
+    BorderPane borderPane;
 
     @FXML
     private ComboBox<String> taskComboBox;

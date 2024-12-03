@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -30,6 +29,7 @@ public class AuditorController extends Controller{
         taskComboBox.setItems(taskOptions());
     }
 
+    @SuppressWarnings("unused")
     public void handleTaskSelection(ActionEvent actionEvent) {
         //used for selecting the json path
         positionModel.setTitle(taskComboBox.getValue());
@@ -47,6 +47,7 @@ public class AuditorController extends Controller{
         }
     }
 
+    @SuppressWarnings("unused")
     public void handleBarChart(ActionEvent actionEvent) {
         String title = positionModel.getTitle();
         String[] years = positionModel.getJsonYearArray();
@@ -55,6 +56,7 @@ public class AuditorController extends Controller{
         BarChartControllerUtils.displayBarChart(borderPane, title, years, hospitalDataArray);
     }
 
+    @SuppressWarnings("unused")
     public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
 
