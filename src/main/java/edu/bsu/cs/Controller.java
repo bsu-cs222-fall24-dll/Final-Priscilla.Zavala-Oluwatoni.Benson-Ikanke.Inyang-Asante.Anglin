@@ -40,7 +40,7 @@ public abstract class Controller {
     }
 
     public void logout(ActionEvent actionEvent) {
-        Alert alert = confirmationAlert("Are you sure you want to logout?");
+        Alert alert = confirmationAlert();
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
@@ -61,6 +61,7 @@ public abstract class Controller {
         }
     }
 
+    @SuppressWarnings("unused")
     public void stateSelector(ActionEvent actionEvent){
         stateComboBox.setOnAction(event -> {
             String selectedState = stateComboBox.getSelectionModel().getSelectedItem();
@@ -106,11 +107,11 @@ public abstract class Controller {
         alert.showAndWait();
     }
 
-    private Alert confirmationAlert(String message){
+    private Alert confirmationAlert(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText(message);
+        alert.setContentText("Are you sure you want to logout?");
         return alert;
     }
 

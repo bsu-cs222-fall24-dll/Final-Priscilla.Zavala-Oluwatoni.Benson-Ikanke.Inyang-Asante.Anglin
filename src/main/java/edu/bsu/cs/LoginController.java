@@ -25,8 +25,8 @@ public class LoginController extends Controller{
         try {
             if (model.isValidCredential(credentialsPassword.getText())) {
                 String password = credentialsPassword.getText();
-                String fxmlFile = "";
-                String role = "";
+                String fxmlFile;
+                String role;
 
                 switch (password) {
                     case "100":
@@ -78,11 +78,11 @@ public class LoginController extends Controller{
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             showAlert("Program failed");
         }
     }
 
+    @SuppressWarnings("unused")
     public void handleClose(ActionEvent actionEvent) {
         System.exit(0);
     }
