@@ -14,16 +14,13 @@ public class UserModel{
 
     //helper method to separate logic for processing user task input in MenuController
     public boolean isValidTaskForPosition(String position, String taskID) {
-        if (position.equals("Cost Analyst")) {
-            return isValidCostAnalystSpecification(taskID);
-        } else if (position.equals("Auditor")) {
-            return isValidAuditorSpecification(taskID);
-        } else if (position.equals("HR Director")) {
-            return isValidAuditorSpecification(taskID);
-        } else if (position.equals("Medicaid Data Analyst")) {
-            return isValidAuditorSpecification(taskID);
-        }
-        return false;
+        return switch (position) {
+            case "Cost Analyst" -> isValidCostAnalystSpecification(taskID);
+            case "Auditor" -> isValidAuditorSpecification(taskID);
+            case "HR Director" -> isValidHRDirectorSpecification(taskID);
+            case "Medicaid Data Analyst" -> isValidMedicaidDataAnalystSpecification(taskID);
+            default -> false;
+        };
     }
 
     public boolean isValidCostAnalystSpecification(String specificationID) {

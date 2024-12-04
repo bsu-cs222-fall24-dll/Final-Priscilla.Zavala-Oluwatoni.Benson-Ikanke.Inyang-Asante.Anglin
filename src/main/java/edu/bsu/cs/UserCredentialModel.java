@@ -13,16 +13,12 @@ public class UserCredentialModel {
     }
 
     protected String getPositionByCredential (String credentialID) {
-        if (credentialID.equals("100")) {
-            return "Cost Analyst";
-        } else if (credentialID.equals("200")) {
-            return "Auditor";
-        } else if(credentialID.equals("300")){
-            return "HR Director";
-        } else if (credentialID.equals("400")) {
-            return "Medicaid Data Analyst";
-        } else {
-            return null;
-        }
+        return switch (credentialID) {
+            case "100" -> "Cost Analyst";
+            case "200" -> "Auditor";
+            case "300" -> "HR Director";
+            case "400" -> "Medicaid Data Analyst";
+            default -> null;
+        };
     }
 }
