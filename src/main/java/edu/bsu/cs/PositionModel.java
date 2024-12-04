@@ -2,14 +2,10 @@ package edu.bsu.cs;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public abstract class PositionModel {
 
     protected String title;
-    private final DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-    private final NumberFormat number = NumberFormat.getPercentInstance();
     private final JSONDocParser jsonDocParser = new JSONDocParser();
 
     public String[] getJsonDataArray() {
@@ -20,7 +16,7 @@ public abstract class PositionModel {
         return jsonYearArray;
     }
 
-    private String[] jsonDataArray;
+    String[] jsonDataArray;
     private String[] jsonYearArray;
 
     protected abstract String retrieveJsonPath(String taskIDFromUserChoice);
@@ -35,6 +31,7 @@ public abstract class PositionModel {
         this.title = title;
     }
 
+    //cannot make unit test - requires live connect via jsonPath
     protected String retrieveJsonFile(String id, String jsonPath) throws IOException, URISyntaxException {
         JSONReaderFormatter jsonReaderFormatter = new JSONReaderFormatter();
         JSONDocParser jsonDocParser = new JSONDocParser();
@@ -49,38 +46,17 @@ public abstract class PositionModel {
         return taskIDToJSONData;
     }
 
-    protected String formatNumericJsonData(String jsonFile) throws IOException, URISyntaxException {
-        StringBuilder numericFormat = new StringBuilder();
+    public int calculateMaxDataWidth() {
+        int maxWidth = 0;
+        for (String name : jsonDataArray) {
+            maxWidth = Math.max(maxWidth, name.length());
+        }
+        return maxWidth;
+    }
+
+    //cannot make unit test - requires user input for hospitalID to obtain jsonFile
+    public void loadNumericJsonData(String jsonFile) throws IOException, URISyntaxException {
         jsonDataArray = jsonFile.replace("[", "").replace("]", "").replace("\"", "").split(",");
         jsonYearArray = jsonDocParser.yearDocParser(UserInput.getHospitalID()).replace("[", "").replace("]", "").replace("\"", "").split(",");
-
-        int maxDataWidth = 0;
-        for (String name : jsonDataArray) {
-            maxDataWidth = Math.max(maxDataWidth, name.length());
-        }
-
-        for (int i = 0; i < Math.min(jsonDataArray.length, jsonYearArray.length); i++) {
-            long tempNumeric;
-            String valueString = jsonDataArray[i].trim();
-            String year = jsonYearArray[i].trim();
-                try{
-                    tempNumeric = Long.parseLong(valueString);
-                } catch (NumberFormatException e){
-                    double tempDecimal = Double.parseDouble(valueString);
-                    double shiftedLeft = tempDecimal / Math.pow(100, 1);
-                    String formattedPercentage = number.format(shiftedLeft);
-                    numericFormat.append(String.format("\t%-"+ maxDataWidth +"s %s%n", formattedPercentage, year));
-                    continue;
-                }
-                try{
-                    String formattedValue = decimalFormat.format(tempNumeric);
-                    int padding = Math.abs((maxDataWidth - title.length()) / 2);
-                    numericFormat.append(String.format("%"  + (padding + title.length()) + "s %"+ ((maxDataWidth + 8 ) - padding - title.length()) + "s%n", formattedValue, year));
-
-                }catch (Exception e){
-                    System.err.println("Format error...");
-                }
-        }
-        return numericFormat.toString();
     }
 }
