@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,6 +17,7 @@ import java.util.Optional;
 public abstract class Controller {
     UserModel model = new UserModel();
     InStateModel inStateModel = new InStateModel();
+
     @FXML
     ObservableList<String> observableList = FXCollections.observableArrayList();
 
@@ -55,7 +55,6 @@ public abstract class Controller {
 
             } catch (Exception e) {
                 showAlert("Failed to load login screen");
-                e.printStackTrace();
             }
         }
     }
@@ -90,7 +89,7 @@ public abstract class Controller {
     }
 
     public ObservableList<String> retrieveInStateHospitals(String stateSelection) throws IOException, URISyntaxException {
-        inStateModel.formatHospitalInfoJsonData(stateSelection);
+        inStateModel.loadHospitalData(stateSelection);
         for (int i = 0; i < inStateModel.getJsonHospitalNameArray().length; i++) {
             String hospitalInfo = inStateModel.getJsonHospitalNameArray()[i] + " (ID: " + inStateModel.getJsonHospitalIDArray()[i] + ")";
             observableList.add(hospitalInfo);
