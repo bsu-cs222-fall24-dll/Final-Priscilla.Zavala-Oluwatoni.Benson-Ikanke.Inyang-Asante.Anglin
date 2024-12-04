@@ -10,9 +10,9 @@ public class InStateModelView {
         this.model = new InStateModel(); //instantiate model internally
     }
 
+    //NOT model code, view code for formatting data
     protected String formatHospitalInfoJsonData(String[] hospitalNames, String[] hospitalIDs) {
         StringBuilder hospitalInfoFormat = new StringBuilder();
-
 
         int maxNameWidth = 0;
         for (String name : hospitalNames) {
