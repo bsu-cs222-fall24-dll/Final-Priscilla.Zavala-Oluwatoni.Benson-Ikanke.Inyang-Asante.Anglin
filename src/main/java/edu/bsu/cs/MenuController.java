@@ -149,9 +149,14 @@ public class MenuController extends UserView{
 
     private void menuDisplayHospitalID(String hospitalID) throws IOException, URISyntaxException {
         String jsonPath = currentModel.retrieveJsonPath(taskID);
-        String jsonFile = currentModel.retrieveJsonFile(hospitalID,jsonPath);
-        String formatData = currentModel.formatNumericJsonData(jsonFile);
-        currentView.displayFormattedData(formatData, jsonPath);
+        String jsonFile = currentModel.retrieveJsonFile(hospitalID, jsonPath);
+        currentModel.loadNumericJsonData(jsonFile);
+        String[] jsonDataArray = currentModel.getJsonDataArray();
+        String[] jsonYearArray = currentModel.getJsonYearArray();
+        int maxDataWidth = currentModel.calculateMaxDataWidth();
+        String title = currentModel.getTitle();
+        String formattedData = currentView.formatDataForDisplay(jsonDataArray, jsonYearArray, maxDataWidth, title);
+        currentView.displayFormattedData(formattedData, jsonPath);
     }
 
     private void menuDisplayState() throws IOException, URISyntaxException {

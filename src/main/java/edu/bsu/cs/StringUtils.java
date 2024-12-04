@@ -28,7 +28,7 @@ public final class StringUtils {
             String jsonPath = positionModel.retrieveJsonPath(taskID);
             String jsonFile = positionModel.retrieveJsonFile(hospitalID, jsonPath);
 
-            positionModel.formatNumericJsonData(jsonFile);
+            positionModel.loadNumericJsonData(jsonFile);
 
             //validating data
             if (positionModel.getJsonDataArray() == null || positionModel.getJsonYearArray() == null) {
