@@ -21,6 +21,7 @@ public class BuildURL {
         return hospital != null && !hospital.isEmpty() && hospital.matches("\\d+");
     }
 
+    //cannot make unit test - view code
     public String stateValidator() {
         while (true) {
             String state = UserInput.stateInput();
