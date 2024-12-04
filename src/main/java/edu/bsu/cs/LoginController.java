@@ -4,11 +4,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -18,10 +19,16 @@ public class LoginController extends Controller{
     @FXML
     private PasswordField credentialsPassword;
 
+    public void handleKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            login();
+        }
+    }
+
     @FXML
     private Label infoLabel;
 
-    public void login(ActionEvent actionEvent) {
+    public void login() {
         try {
             if (model.isValidCredential(credentialsPassword.getText())) {
                 String password = credentialsPassword.getText();
@@ -52,7 +59,7 @@ public class LoginController extends Controller{
 
                 infoLabel.setText(role);
 
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Stage stage = (Stage) credentialsPassword.getScene().getWindow();
                 stage.close();
 
                 URL resource = getClass().getResource(fxmlFile);

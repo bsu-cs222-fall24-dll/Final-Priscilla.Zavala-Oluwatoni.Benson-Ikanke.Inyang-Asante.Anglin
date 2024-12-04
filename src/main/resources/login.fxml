@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs.LoginController">
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
@@ -15,8 +14,8 @@
                   <Insets left="210.0" right="210.0" />
                </VBox.margin>
                <children>
-                  <PasswordField fx:id="credentialsPassword" alignment="CENTER" promptText="Enter position password..." />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" text="Login" translateY="50.0" />
+                  <PasswordField fx:id="credentialsPassword" alignment="CENTER" onKeyPressed="#handleKeyPressed" promptText="Enter position password..." />
+                  <Button fx:id="login" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" text="Login" translateY="50.0" />
                   <Label fx:id="infoLabel" maxWidth="-Infinity" prefHeight="18.0" prefWidth="199.0" text="Please enter your credentials" translateY="-50.0" />
                </children>
             </StackPane>

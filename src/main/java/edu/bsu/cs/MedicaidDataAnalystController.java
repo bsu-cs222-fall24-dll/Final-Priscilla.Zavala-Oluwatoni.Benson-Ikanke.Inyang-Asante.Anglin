@@ -68,6 +68,15 @@ public class MedicaidDataAnalystController extends Controller{
     }
 
     @SuppressWarnings("unused")
+    public void handleScatterChart(ActionEvent actionEvent){
+        String title = positionModel.getTitle();
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        ScatterChartControllerUtils.displayScatterChart(borderPane, title, years, hospitalDataArray);
+    }
+
+    @SuppressWarnings("unused")
     public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
 

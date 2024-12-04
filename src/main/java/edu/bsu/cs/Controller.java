@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,7 +41,8 @@ public abstract class Controller {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                MenuItem menuItem = (MenuItem) actionEvent.getSource();
+                Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
                 stage.close();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
@@ -57,6 +55,7 @@ public abstract class Controller {
 
             } catch (Exception e) {
                 showAlert("Failed to load login screen");
+                e.printStackTrace();
             }
         }
     }

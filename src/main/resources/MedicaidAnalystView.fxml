@@ -11,24 +11,41 @@
          <top>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="742.0" BorderPane.alignment="CENTER">
                 <children>
-                    <HBox prefHeight="38.0" prefWidth="656.0">
+                    <HBox prefHeight="80.0" prefWidth="742.0">
                         <children>
-                            <Label prefHeight="37.0" prefWidth="128.0" text="User Dashboard">
+                        <MenuBar fx:id="menuBar">
+                          <menus>
+                            <Menu fx:id="chartSelection" mnemonicParsing="false" text="Charts">
+                              <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleScatterChart" text="Scatter Chart" />
+                                    <MenuItem mnemonicParsing="false" onAction="#handleBarChart" text="Bar Chart" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Options">
+                              <items>
+                                <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Help">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                            <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="User Dashboard">
                                 <font>
                                     <Font name="Montserrat Regular" size="15.0" />
                                 </font>
+                           <HBox.margin>
+                              <Insets left="-172.0" top="35.0" />
+                           </HBox.margin>
                             </Label>
-                            <Button mnemonicParsing="false" onAction="#logout" text="Sign Out">
-                                <HBox.margin>
-                                    <Insets top="7.0" />
-                                </HBox.margin>
-                        </Button>
                         </children>
                     </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <ComboBox fx:id="taskComboBox" onAction="#handleTaskSelection" prefWidth="150.0" promptText="Task Options" />
-                        <Button mnemonicParsing="false" onAction="#handleBarChart" text="Test Bar Chart" />
                      </children>
                   </HBox>
                   <Label text="Select State">

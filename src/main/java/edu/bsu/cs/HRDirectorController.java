@@ -75,4 +75,13 @@ public class HRDirectorController extends Controller{
         //utility method to handle hospital selection
         StringUtils.processSelectedHospital(selectedHospital, positionModel, taskID);
     }
+
+    @SuppressWarnings("unused")
+    public void handleScatterChart(ActionEvent actionEvent) {
+        String title = positionModel.getTitle();
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        ScatterChartControllerUtils.displayScatterChart(borderPane, title, years, hospitalDataArray);
+    }
 }
