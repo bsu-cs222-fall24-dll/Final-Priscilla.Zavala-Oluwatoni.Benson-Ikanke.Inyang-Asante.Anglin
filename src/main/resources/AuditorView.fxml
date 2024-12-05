@@ -23,7 +23,7 @@
                             <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout"/>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
-                            <MenuItem mnemonicParsing="false" text="About"/>
+                            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
                         </Menu>
                     </MenuBar>
                     <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="User Dashboard">

@@ -60,6 +60,22 @@ public abstract class Controller {
     }
 
     @SuppressWarnings("unused")
+    public void about(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("About This Hospital Data Application");
+        alert.setContentText("""
+                This application connects to a hospital API to display respective data. \
+                You can select any combination of position task, state, hospital ID, and chart type.
+                
+                To sign in as a different authenticated user, click Options button to logout.
+                
+                Team Members: Priscilla Zavala, Ikanke Inyang, Asante Anglin, Toni Benson.""");
+        alert.setResizable(false);
+        alert.showAndWait();
+    }
+
+    @SuppressWarnings("unused")
     public void stateSelector(ActionEvent actionEvent){
         stateComboBox.setOnAction(event -> {
             String selectedState = stateComboBox.getSelectionModel().getSelectedItem();
