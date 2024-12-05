@@ -31,8 +31,9 @@ Clone the respository to your local machine
 To run the CLI version of the application, navigate to the Main class and execute the main function.
 ##### Running the GUI
 To run the GUI version, go to the Gradle tasks directory, then navigate to:
-Tasks -> Application and double-click run to launch the application as a JVM application.
-Note: There is a known bug when selecting a state in the GUI. To select a state, you must first click a different state and then select the desired one. This issue is currently being debugged, but the application works as intended once the state is properly selected.
+Tasks -> Application and double-click run to launch the application as a JVM application.  
+##### Note:   
+There is a known bug when selecting a state in the GUI. To select a state, you must first click a different state and then select the desired one. This issue is currently being debugged, but the application works as intended once the state is properly selected.
 ##### API ACCESS KEY REQUIRED
 The program requires an API access key to function. Please request the key directly if you would like to run the application.
 ###### Set Up API Key 
