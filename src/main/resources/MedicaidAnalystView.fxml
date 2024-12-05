@@ -5,65 +5,57 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="536.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs.MedicaidDataAnalystController">
-   <children>
-      <BorderPane fx:id="borderPane">
-         <top>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="742.0" BorderPane.alignment="CENTER">
-                <children>
-                    <HBox prefHeight="80.0" prefWidth="742.0">
-                        <children>
-                        <MenuBar fx:id="menuBar">
-                          <menus>
-                            <Menu fx:id="chartSelection" mnemonicParsing="false" text="Charts">
-                              <items>
-                                <MenuItem mnemonicParsing="false" onAction="#handleScatterChart" text="Scatter Chart" />
-                                    <MenuItem mnemonicParsing="false" onAction="#handleBarChart" text="Bar Chart" />
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Options">
-                              <items>
-                                <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Help">
-                              <items>
-                                  <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
-                              </items>
-                            </Menu>
-                          </menus>
-                        </MenuBar>
-                            <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="User Dashboard">
-                                <font>
-                                    <Font name="Montserrat Regular" size="15.0" />
-                                </font>
-                           <HBox.margin>
-                              <Insets left="-172.0" top="35.0" />
-                           </HBox.margin>
-                            </Label>
-                        </children>
-                    </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <ComboBox fx:id="taskComboBox" onAction="#handleTaskSelection" prefWidth="150.0" promptText="Task Options" />
-                     </children>
-                  </HBox>
-                  <Label text="Select State">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <ComboBox fx:id="stateComboBox" onAction="#stateSelector" prefHeight="26.0" prefWidth="114.0" promptText="Select a State" />
-                  <ListView fx:id="stateSelectionHospitals" onMouseClicked="#listViewSelectedHospital" prefHeight="221.0" prefWidth="742.0" />
-                </children>
+<AnchorPane prefHeight="536.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs.MedicaidDataAnalystController">
+    <BorderPane fx:id="borderPane">
+        <top>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                  prefHeight="400.0" prefWidth="742.0" BorderPane.alignment="CENTER">
+                <HBox prefHeight="80.0" prefWidth="742.0">
+                    <MenuBar fx:id="menuBar">
+                        <Menu fx:id="chartSelection" mnemonicParsing="false" text="Charts">
+                            <MenuItem mnemonicParsing="false" onAction="#handleScatterChart"
+                                      text="Scatter Chart"/>
+                            <MenuItem mnemonicParsing="false" onAction="#handleBarChart"
+                                      text="Bar Chart"/>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Options">
+                            <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout"/>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
+                        </Menu>
+                    </MenuBar>
+                    <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="User Dashboard">
+                        <font>
+                            <Font name="Montserrat Regular" size="15.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets left="-172.0" top="35.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <ComboBox fx:id="taskComboBox" onAction="#handleTaskSelection" prefWidth="150.0"
+                              promptText="Task Options"/>
+                </HBox>
+                <Label text="Select State">
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+                <ComboBox fx:id="stateComboBox" onAction="#stateSelector" prefHeight="26.0" prefWidth="114.0"
+                          promptText="Select a State"/>
+                <ListView fx:id="stateSelectionHospitals" onMouseClicked="#listViewSelectedHospital"
+                          prefHeight="221.0" prefWidth="742.0"/>
             </VBox>
-         </top>
-      </BorderPane>
-      <Label text="Hospital App Name" AnchorPane.rightAnchor="10.0">
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </Label>
-        <Separator maxWidth="-Infinity" minWidth="600.0" prefHeight="10.0" style="-fx-background-color: #a85e32;" AnchorPane.topAnchor="27.0" />
-   </children>
+        </top>
+    </BorderPane>
+    <Label text="Hospital App Name" AnchorPane.rightAnchor="10.0">
+        <padding>
+          <Insets top="10.0"/>
+        </padding>
+    </Label>
+    <Separator maxWidth="-Infinity" minWidth="600.0" prefHeight="10.0" style="-fx-background-color: #a85e32;"
+               AnchorPane.topAnchor="27.0"/>
 </AnchorPane>
