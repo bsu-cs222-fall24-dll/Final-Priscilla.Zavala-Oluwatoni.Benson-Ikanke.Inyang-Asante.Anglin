@@ -32,21 +32,70 @@ To run the CLI version of the application, navigate to the Main class and execut
 ##### Running the GUI
 To run the GUI version, go to the Gradle tasks directory, then navigate to:
 Tasks -> Application and double-click run to launch the application as a JVM application.  
-##### Note:   
-There is a known bug when selecting a state in the GUI. To select a state, you must first click a different state and then select the desired one. This issue is currently being debugged, but the application works as intended once the state is properly selected.
-##### API ACCESS KEY REQUIRED
-The program requires an API access key to function. Please request the key directly if you would like to run the application.
-###### Set Up API Key 
-Create a .env file at the root of the project and enter your API key in the following format: API_KEY=access-key-here  
-Alternatively, you can create this file under the resources folder inside the main directory for better organization.
+##### Known Issue (GUI State Selection Bug)  
+There is a known bug when selecting a state in the GUI. To select a state, you must first click a different state and then select the desired one. This issue is currently being debugged, but the application works as intended once the correct state is selected.
+##### API Access Key Setup
+1. The program requires an API access key. Please request the key directly.
+2. Create a .env file at the project root and enter your API key in the following format: API_KEY=access-key-here     
+* Alternatively, you can create this file under the resources folder inside the main directory for better organization.
 
 ***
 
-### Warning Suppressions:
+### Controller Warning Suppressions:
+The following controllers include warning suppressions for Action and Mouse Events:
+- Controller
+- LoginController
+- MenuController
+- CostAnalystController
+- AuditorController
+- HRDirectorController
+- MedicaidAnalystController
 
+*** 
 
-### Project Structure:
-#### Model
+## Project Structure:
+#### Model Layer     
+Responsible for data retrieval, controlling program flow, and configuration:
+- AuditorController
+- AuditorModel
+- BuildURL
+- Controller
+- CostAnalystController
+- CostAnalystModel
+- HRDirectorController
+- HRDirectorModel
+- InStateModel
+- JSONDocParser
+- JSONReaderFormatter
+- LoginController
+- MedicaidAnalystController
+- MedicaidAnalystModel
+- MenuController
+- PositionModel
+- TaskSpecificationModel
+- UserCredentialModel
+- UserModel
+- WebsiteURLConnection
+  
+#### View Layer     
+Manages the user interface and view-related logic:
+- TaskOptions
+- AuditorView
+- CostAnalystView
+- HRDirectorView
+- MedicaidAnalystView
+- ErrorProcessor
+- InStateModelView
+- PositionViewUserView
+- StateAbbreviation
 
-#### View
+### Utility Classes   
+Handles common reusable tasks in the program:
+- AlertUtils
+- BarChartControllerUtils
+- ScatterChartControllerUtils
+- StringUtils
 
+### URL Connection Classes   
+Facilitates live connections to the hospital API:   
+- WebsiteURLConnection
