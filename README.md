@@ -4,11 +4,15 @@
 ### Project Summary:
 This application enables users to log in and authenticate based on their credentials for one of the following roles: Cost Analyst, Auditor, HR Director, or Medicaid Analyst. After logging in, users select a position-specific task to access relevant hospital data. Users can specify a state and hospital ID to retrieve data from a hospital data API. The application fetches and displays the data, allowing users to view how the information has changed over time.
 
+***
+
 ### 2 Possible Program Interfaces:
 #### CLI (Command-Line Interface)
 Users can interact with the program via the command line, specifying their role, task, state, and hospital ID to retrieve and view data.
 #### GUI (Graphic User Interface)
 A graphical interface is available for users who prefer a visual experience. It provides the same functionality as the CLI, but with an intuitive layout and visual chart representations of the data for better understanding and analysis.
+
+***
 
 ### Features:
 * User Authentication: Login based on role-specific credentials (Cost Analyst, Auditor, HR Director, Medicaid Analyst).
@@ -17,6 +21,8 @@ A graphical interface is available for users who prefer a visual experience. It 
 * Data Visualization: Visual representations of data over time (bar chart, scatter plot, histogram).
 * CLI & GUI Support: The program can be run both via a command-line interface (CLI) and a graphical user interface (GUI).
 * Historical Data Viewing: View how the hospital data has changed over the years.
+
+***
 
 ### Build Instructions:
 ##### Clone the Respository
@@ -30,8 +36,10 @@ Note: There is a known bug when selecting a state in the GUI. To select a state,
 ##### API ACCESS KEY REQUIRED
 The program requires an API access key to function. Please request the key directly if you would like to run the application.
 ###### Set Up API Key 
-Create a .env file at the root of the project and enter your API key in the following format: API_KEY=access-key-here
+Create a .env file at the root of the project and enter your API key in the following format: API_KEY=access-key-here  
 Alternatively, you can create this file under the resources folder inside the main directory for better organization.
+
+***
 
 ### Warning Suppressions:
 
