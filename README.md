@@ -18,7 +18,8 @@ A graphical interface is available for users who prefer a visual experience. It 
 * User Authentication: Login based on role-specific credentials (Cost Analyst, Auditor, HR Director, Medicaid Analyst).
 * Task Selection: After logging in, users select a position-specific task to access relevant hospital data.
 * State & Hospital Data: Retrieve data based on state and hospital ID input from the user.
-* Data Visualization: Visual representations of data over time (bar chart, scatter plot, histogram).
+* Data Export: Export hospital data to a CSV file for offline use or further analysis.
+* Data Visualization: Visual representations of data over time (bar chart, scatter plot) with JavaFX.
 * CLI & GUI Support: The program can be run both via a command-line interface (CLI) and a graphical user interface (GUI).
 * Historical Data Viewing: View how the hospital data has changed over the years.
 
@@ -75,7 +76,7 @@ Responsible for data retrieval, controlling program flow, and configuration:
 - TaskSpecificationModel
 - UserCredentialModel
 - UserModel
-- WebsiteURLConnection
+- ExportCSV
   
 #### View Layer     
 Manages the user interface and view-related logic:
