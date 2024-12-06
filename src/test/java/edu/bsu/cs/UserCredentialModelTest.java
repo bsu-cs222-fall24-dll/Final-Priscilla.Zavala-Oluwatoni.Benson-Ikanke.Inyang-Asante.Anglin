@@ -24,6 +24,16 @@ public class UserCredentialModelTest {
     }
 
     @Test
+    public void testIsValidCredential_withValidCredential300() {
+        assertTrue(userCredentialModel.isValidCredential("300"));
+    }
+
+    @Test
+    public void testIsValidCredential_withValidCredential400() {
+        assertTrue(userCredentialModel.isValidCredential("400"));
+    }
+
+    @Test
     public void testIsValidCredential_withInvalidCredentialNull() {
         assertFalse(userCredentialModel.isValidCredential(null));
     }
@@ -41,5 +51,15 @@ public class UserCredentialModelTest {
     @Test
     public void testGetPositionByCredential_withValidCredentialAuditor200() {
         assertEquals("Auditor", userCredentialModel.getPositionByCredential("200"));
+    }
+
+    @Test
+    public void testGetPositionByCredential_withValidCredentialHRDirector300() {
+        assertEquals("HR Director", userCredentialModel.getPositionByCredential("300"));
+    }
+
+    @Test
+    public void testGetPositionByCredential_withValidCredentialMedicaidDataAnalyst400() {
+        assertEquals("Medicaid Data Analyst", userCredentialModel.getPositionByCredential("400"));
     }
 }

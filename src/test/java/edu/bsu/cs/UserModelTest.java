@@ -67,6 +67,16 @@ public class UserModelTest {
     }
 
     @Test
+    void testIsValidTaskForPosition_ValidTasksHRDirector301() {
+        assertTrue(userModel.isValidTaskForPosition("HR Director", "301"), "Expected valid task for HR Director");
+    }
+
+    @Test
+    void testIsValidTaskForPosition_ValidTasksMedicaidDataAnalyst401() {
+        assertTrue(userModel.isValidTaskForPosition("Medicaid Data Analyst", "401"), "Expected valid task for Medicaid Data Analyst");
+    }
+
+    @Test
     void testIsValidTaskForPosition_InvalidTasksCostAnalystInvalidID() {
         assertFalse(userModel.isValidTaskForPosition("Cost Analyst", "108"), "Expected invalid task for Cost Analyst");
     }
@@ -75,5 +85,17 @@ public class UserModelTest {
     void testIsValidTaskForPosition_InvalidTasksAuditorInvalidID() {
         assertFalse(userModel.isValidTaskForPosition("Auditor", "203"), "Expected invalid task for Auditor");
     }
+
+    @Test
+    void testIsValidTaskForPosition_InvalidTasksHRDirectorInvalidID() {
+        assertFalse(userModel.isValidTaskForPosition("HR Director", "308"), "Expected invalid task for HR Director");
+    }
+
+    @Test
+    void testIsValidTaskForPosition_InvalidTasksMedicaidAnalystInvalidID() {
+        assertFalse(userModel.isValidTaskForPosition("Medicaid Analyst", "408"), "Expected invalid task for Medicaid Analyst");
+    }
+
+
 }
 
