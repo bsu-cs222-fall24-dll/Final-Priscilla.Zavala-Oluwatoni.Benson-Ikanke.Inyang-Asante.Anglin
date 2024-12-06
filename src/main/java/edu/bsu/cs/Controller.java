@@ -31,10 +31,6 @@ public abstract class Controller {
 
     protected abstract void setTaskOptions();
 
-    protected String getSelectedHospital(){
-        return stateSelectionHospitals.getSelectionModel().getSelectedItem();
-    }
-
     public void selectionHandler(String state) throws IOException, URISyntaxException {
         clearListView();
         stateSelectionHospitals.setItems(retrieveInStateHospitals(state));
@@ -67,14 +63,13 @@ public abstract class Controller {
     public void about(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("About This Hospital Data Application");
+        alert.setHeaderText("How to Function Hospital Data App via GUI");
         alert.setContentText("""
-                This application connects to a hospital API to display respective data. \
-                You can select any combination of position task, state, hospital ID, and chart type.
-                
-                To sign in as a different authenticated user, click Options button to logout.
-                
-                Team Members: Priscilla Zavala, Ikanke Inyang, Asante Anglin, Toni Benson.""");
+                You can select any combination of position task, state, hospital ID, and chart type to view retrieved data. \n
+                To export the retrieved data in a CSV format, click "Export CSV" under the Options button, then name your CSV file
+                to export to. Copy the created directory into a search explorer to view the CSV file. \n
+               
+                To sign in as a different authenticated user, click "Logout" under the Options button.""");
         alert.setResizable(false);
         alert.showAndWait();
     }

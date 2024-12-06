@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 public class LoginController extends Controller{
+    public MenuItem closeApplication;
 
     @FXML
     private PasswordField credentialsPassword;
@@ -102,5 +105,23 @@ public class LoginController extends Controller{
     @Override
     protected void setTaskOptions() {
 
+    }
+
+    @SuppressWarnings("unused")
+    public void aboutLogin(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Login");
+        alert.setHeaderText("About & How to Login to Hospital Data App");
+        alert.setContentText("""
+                This application connects to a hospital API to display respective data. \n
+                To login as a Cost Analyst enter credential ID: 100 \n
+                To login as an Auditor enter credential ID: 200 \n
+                To login as a HR Director enter credential ID: 300 \n
+                To login as a Medicaid Analyst enter credential ID: 400 \n
+                To close GUI Application, click "Close" under the File button.
+                
+                Team Members: Priscilla Zavala, Ikanke Inyang, Asante Anglin, Toni Benson.""");
+        alert.setResizable(false);
+        alert.showAndWait();
     }
 }

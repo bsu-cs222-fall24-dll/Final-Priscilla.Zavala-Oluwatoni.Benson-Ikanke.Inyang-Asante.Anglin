@@ -31,7 +31,7 @@
                <MenuItem fx:id="closeApplication" mnemonicParsing="false" onAction="#handleClose" text="Close"/>
            </Menu>
            <Menu mnemonicParsing="false" text="Help">
-               <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
+               <MenuItem mnemonicParsing="false" onAction="#aboutLogin" text="AboutLogin"/>
            </Menu>
        </MenuBar>
    </top>
