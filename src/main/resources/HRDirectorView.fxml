@@ -18,8 +18,6 @@
                                       text="Scatter Chart"/>
                             <MenuItem mnemonicParsing="false" onAction="#handleBarChart"
                                       text="Bar Chart"/>
-                            <MenuItem mnemonicParsing="false" onAction="#handleBarChart"
-                                      text="Bar Chart"/>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Options">
                             <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout"/>
