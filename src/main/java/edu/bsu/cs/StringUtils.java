@@ -21,9 +21,11 @@ public final class StringUtils {
         try {
             //extracts hospital ID
             String hospitalID = extractFirstNumber(selectedHospital);
+            String hospitalName = extractName(selectedHospital);
 
             //stores hospital ID globally to use in utility class
             UserInput.setHospitalID(hospitalID);
+            UserInput.setHospitalName(hospitalName);
 
             String jsonPath = positionModel.retrieveJsonPath(taskID);
             String jsonFile = positionModel.retrieveJsonFile(hospitalID, jsonPath);
@@ -54,5 +56,16 @@ public final class StringUtils {
             return matcher.group();
         }
         return null;
+    }
+
+    public static String extractName(String str) {
+        if (str == null || str.isEmpty()) {
+            return null;
+        }
+
+        // Define a regex to match the ID part: everything from "(ID:" followed by digits and closing parenthesis
+        String regex = "\\s*\\(ID:\\s*\\d+\\)";
+
+        return str.replaceAll(regex, "").trim();
     }
 }

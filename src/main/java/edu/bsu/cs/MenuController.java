@@ -22,6 +22,7 @@ public class MenuController extends UserView{
         this.view = view;
         this.buildURL = buildURL;
 
+
         @SuppressWarnings("do not need to be queried for purpose of project, but necessary to be updated")
         List<PositionModel> positionModels = new ArrayList<>();
         positionModels.add(new CostAnalystModel());

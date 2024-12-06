@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 public class MedicaidDataAnalystController extends Controller{
     PositionModel positionModel = new MedicaidDataAnalystModel();
     public String taskID;
+    public String[] hospitalDataArray;
 
     @FXML
     BorderPane borderPane;
@@ -20,6 +21,10 @@ public class MedicaidDataAnalystController extends Controller{
 
     public void setTaskOptions(){
         taskComboBox.setItems(taskOptions());
+    }
+
+    public String getSelectedHospitalName(){
+        return stateSelectionHospitals.getSelectionModel().getSelectedItem();
     }
 
     @Override
@@ -71,7 +76,7 @@ public class MedicaidDataAnalystController extends Controller{
     public void handleScatterChart(ActionEvent actionEvent){
         String title = positionModel.getTitle();
         String[] years = positionModel.getJsonYearArray();
-        String[] hospitalDataArray = positionModel.getJsonDataArray();
+        hospitalDataArray = positionModel.getJsonDataArray();
 
         ScatterChartControllerUtils.displayScatterChart(borderPane, title, years, hospitalDataArray);
     }
@@ -79,8 +84,14 @@ public class MedicaidDataAnalystController extends Controller{
     @SuppressWarnings("unused")
     public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
-
         //utility method to handle hospital selection
         StringUtils.processSelectedHospital(selectedHospital, positionModel, taskID);
+    }
+
+    public void handleCSV(ActionEvent actionEvent) {
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        ExportCSV.exportToCSV(positionModel,hospitalDataArray, years);
     }
 }

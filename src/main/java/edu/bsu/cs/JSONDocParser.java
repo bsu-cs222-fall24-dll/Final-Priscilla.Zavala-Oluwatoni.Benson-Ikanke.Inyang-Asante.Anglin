@@ -14,6 +14,7 @@ public class JSONDocParser extends JSONReaderFormatter {
     }
 
     protected String hospitalDocParser(String hospitalID, String jsonPath) throws IOException, URISyntaxException {
+
         String jsonFile = jsonDocFormatter(hospitalID);
         JSONArray hospitalDoc = JsonPath.read(jsonFile, "$.." + jsonPath);
         return hospitalDoc.toString();

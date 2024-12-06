@@ -31,6 +31,10 @@ public abstract class Controller {
 
     protected abstract void setTaskOptions();
 
+    protected String getSelectedHospital(){
+        return stateSelectionHospitals.getSelectionModel().getSelectedItem();
+    }
+
     public void selectionHandler(String state) throws IOException, URISyntaxException {
         clearListView();
         stateSelectionHospitals.setItems(retrieveInStateHospitals(state));
@@ -132,5 +136,4 @@ public abstract class Controller {
     private void clearListView(){
         observableList.clear();
     }
-
 }

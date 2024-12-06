@@ -20,6 +20,7 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Options">
                      <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout"/>
+                     <MenuItem mnemonicParsing="false" onAction="#handleCSV" text="Export CSV" />
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
                      <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>

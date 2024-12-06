@@ -33,8 +33,6 @@ public class ScatterChartControllerUtils {
     }
 
     public static void displayScatterChart(BorderPane borderPane, String title, String[] years, String[] hospitalDataArray){
-        borderPane.setRight(null);
-
         try {
             ScatterChart<String, Number> scatterChart = createScatterChart(title, years, hospitalDataArray);
             if(scatterChart != null){
@@ -45,7 +43,5 @@ public class ScatterChartControllerUtils {
         }catch(Exception e){
             AlertUtils.showError("Error processing scatter chart data.");
         }
-
-
     }
 }

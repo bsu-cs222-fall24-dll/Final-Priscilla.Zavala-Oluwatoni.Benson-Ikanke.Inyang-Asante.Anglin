@@ -79,7 +79,6 @@ public class CostAnalystController extends Controller{
     @SuppressWarnings("unused")
     public void listViewSelectedHospital(MouseEvent mouseEvent) {
         String selectedHospital = stateSelectionHospitals.getSelectionModel().getSelectedItem();
-
         //utility method to handle hospital selection
         StringUtils.processSelectedHospital(selectedHospital, positionModel, taskID);
     }
@@ -91,5 +90,12 @@ public class CostAnalystController extends Controller{
         String[] hospitalDataArray = positionModel.getJsonDataArray();
 
         ScatterChartControllerUtils.displayScatterChart(borderPane, title, years, hospitalDataArray);
+    }
+
+    public void handleCSV(ActionEvent actionEvent){
+        String[] years = positionModel.getJsonYearArray();
+        String[] hospitalDataArray = positionModel.getJsonDataArray();
+
+        ExportCSV.exportToCSV(positionModel,hospitalDataArray, years);
     }
 }
