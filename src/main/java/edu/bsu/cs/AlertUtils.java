@@ -18,7 +18,7 @@ public final class AlertUtils {
     }
 
     public static String showDialogBox(String message){
-        return showText("CSV Export", message);
+        return showText("Name file to Export", message);
     }
 
     private static String showText(String title, String message){
