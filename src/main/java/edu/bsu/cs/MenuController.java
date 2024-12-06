@@ -23,7 +23,9 @@ public class MenuController extends UserView{
         this.buildURL = buildURL;
 
 
-        @SuppressWarnings("do not need to be queried for purpose of project, but necessary to be updated")
+        //list is meant for initialization only and populated as part of the setup process
+        //position objects are necessary for program to function, even if the list itself is not directly queried
+        @SuppressWarnings("unused")
         List<PositionModel> positionModels = new ArrayList<>();
         positionModels.add(new CostAnalystModel());
         positionModels.add(new AuditorModel());

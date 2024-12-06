@@ -13,17 +13,13 @@ public final class AlertUtils {
         showAlert(AlertType.INFORMATION, "Information", message);
     }
 
-    public static void showWarning(String message) {
-        showAlert(AlertType.WARNING, "Warning", message);
-    }
-
     public static String showDialogBox(String message){
-        return showText("Name file to Export", message);
+        return showText(message);
     }
 
-    private static String showText(String title, String message){
+    private static String showText(String message){
         TextInputDialog text = new TextInputDialog(message);
-        text.setTitle(title);
+        text.setTitle("Name file to Export");
         text.setHeaderText(null);
         text.showAndWait();
         return text.getEditor().getText();

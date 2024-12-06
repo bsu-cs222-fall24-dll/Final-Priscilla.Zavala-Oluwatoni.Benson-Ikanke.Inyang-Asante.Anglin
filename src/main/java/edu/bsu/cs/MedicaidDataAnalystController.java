@@ -5,10 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class MedicaidDataAnalystController extends Controller{
+    public MenuBar menuBar;
+    public Menu chartSelection;
     PositionModel positionModel = new MedicaidDataAnalystModel();
     public String taskID;
     public String[] hospitalDataArray;
@@ -23,9 +27,6 @@ public class MedicaidDataAnalystController extends Controller{
         taskComboBox.setItems(taskOptions());
     }
 
-    public String getSelectedHospitalName(){
-        return stateSelectionHospitals.getSelectionModel().getSelectedItem();
-    }
 
     @Override
     public ObservableList<String> taskOptions(){
@@ -88,6 +89,7 @@ public class MedicaidDataAnalystController extends Controller{
         StringUtils.processSelectedHospital(selectedHospital, positionModel, taskID);
     }
 
+    @SuppressWarnings("unused")
     public void handleCSV(ActionEvent actionEvent) {
         String[] years = positionModel.getJsonYearArray();
         String[] hospitalDataArray = positionModel.getJsonDataArray();

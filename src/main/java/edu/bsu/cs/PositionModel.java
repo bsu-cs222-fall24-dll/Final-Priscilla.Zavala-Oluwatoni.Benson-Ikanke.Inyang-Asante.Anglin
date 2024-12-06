@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 public abstract class PositionModel {
 
     protected String title;
-    protected String hospitalName;
     private final JSONDocParser jsonDocParser = new JSONDocParser();
 
     public String[] getJsonDataArray() {

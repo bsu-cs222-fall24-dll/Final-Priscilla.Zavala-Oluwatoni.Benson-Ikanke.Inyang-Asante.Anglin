@@ -92,6 +92,7 @@ public class CostAnalystController extends Controller{
         ScatterChartControllerUtils.displayScatterChart(borderPane, title, years, hospitalDataArray);
     }
 
+    @SuppressWarnings("unused")
     public void handleCSV(ActionEvent actionEvent){
         String[] years = positionModel.getJsonYearArray();
         String[] hospitalDataArray = positionModel.getJsonDataArray();
