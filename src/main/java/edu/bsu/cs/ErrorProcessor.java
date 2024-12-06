@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public final class ErrorProcessor {
+    //cannot make unit test - requires live url connection
     public static void checkNetworkConnection(URL url) {
         try{
             url.openConnection().connect();

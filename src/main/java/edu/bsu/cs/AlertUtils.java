@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputDialog;
 
+//cannot make unit tests for class - requires user input and live url connection to display errors
 public final class AlertUtils {
     public static void showError(String message) {
         showAlert(Alert.AlertType.ERROR, "Error", message);
